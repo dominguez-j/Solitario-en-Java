@@ -3,5 +3,5 @@
 ## Grupo formado por:
 
 Jonathan Dominguez - 110057
-Martín Sosa - 98741
-Matías Xu - 109938
+<br>Martín Sosa - 98741
+<br>Matías Xu - 109938
