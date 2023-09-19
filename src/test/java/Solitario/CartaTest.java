@@ -1,5 +1,6 @@
-import org.junit.Test;
+package Solitario;
 
+import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class CartaTest {
@@ -60,5 +61,45 @@ public class CartaTest {
 
         //assert
         assertFalse(carta1.esColorOpuesto(carta2));
+    }
+    @Test
+    public void estaOcultaDevuelveTrue() {
+        //arrange
+        Carta carta = new Carta(5, Carta.Palo.CORAZON);
+
+        //assert
+        assertTrue(carta.estaOculta());
+    }
+
+    @Test
+    public void setOculto() {
+        //arrange
+        Carta carta = new Carta(5, Carta.Palo.CORAZON);
+
+        //act
+        carta.setOculto(false);
+
+        //assert
+        assertFalse(carta.estaOculta());
+    }
+
+    @Test
+    public void esMismoPaloDevuelveTrue() {
+        //arrange
+        Carta carta = new Carta(5, Carta.Palo.CORAZON);
+        Carta carta2 = new Carta(4, Carta.Palo.CORAZON);
+
+        //assert
+        assertSame(carta.getPalo(), carta2.getPalo());
+    }
+
+    @Test
+    public void esMismoPaloDevuelveFalse() {
+        //arrange
+        Carta carta = new Carta(5, Carta.Palo.CORAZON);
+        Carta carta2 = new Carta(4, Carta.Palo.TREBOL);
+
+        //assert
+        assertNotSame(carta.getPalo(), carta2.getPalo());
     }
 }
