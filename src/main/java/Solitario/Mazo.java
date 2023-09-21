@@ -1,15 +1,29 @@
 package Solitario;
 
-import java.util.List;
+import java.util.*;
 
-public interface Mazo {
+public abstract class Mazo{
+
     public static final int CARTAS_POR_PALO = 13;
+    protected Deque<Carta> mazo;
+    protected List<PilaDeCartas> tableau;
 
-    public void inicializar();
+    public Mazo(){
+        this.mazo = new ArrayDeque<>();
+        this.tableau = new ArrayList<>();
+    }
 
-    public void mezclar();
+    public abstract void inicializar();
 
-    public Pila getMazo();
+    public void mezclar(){
+        List<Carta> aux = new ArrayList<>(mazo);
+        Collections.shuffle(aux, new Random(System.nanoTime()));
+        mazo = new ArrayDeque<Carta>(mazo);
+    }
 
-    public List<Pila> repartir();
+    public Deque<Carta> getMazo(){
+        return this.mazo;
+    }
+
+    public abstract List<PilaDeCartas> repartir();
 }

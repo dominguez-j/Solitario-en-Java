@@ -3,15 +3,15 @@ package Solitario;
 import java.util.*;
 
 public class Foundation {
-    private List<Pila> foundation;
+    private final List<PilaDeCartas> foundation;
 
-    public Foundation(List<Pila> foundation){
+    public Foundation(List<PilaDeCartas> foundation){
         this.foundation = foundation;
     }
 
     public boolean estaCompleto(){
-        for(Pila p : foundation){
-            if (p.tamanioPila() != Mazo.CARTAS_POR_PALO)
+        for(PilaDeCartas p : foundation){
+            if (p.tamanio() != Mazo.CARTAS_POR_PALO)
                 return false;
         }
         return true;

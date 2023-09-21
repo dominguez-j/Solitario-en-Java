@@ -1,44 +1,33 @@
 package Klondike;
 
 import Solitario.*;
-import java.util.*;
 
-public class PilaDeTableauKlondike extends Pila {
+public class PilaDeTableauKlondike extends PilaDeCartas {
     public PilaDeTableauKlondike(){
         super();
     }
 
-    public PilaDeTableauKlondike(Stack<Carta> tableau){
-        super(tableau);
+    public PilaDeTableauKlondike(PilaDeCartas tableau){
+        super(tableau.getPila());
     }
 
     public void descubrirCarta(){
-        if (pila.peek().estaOculta())
-            pila.peek().setOculto(false);
+        if (this.getPrimera().estaOculta())
+            this.getPrimera().setOculto(false);
     }
 
     @Override
-    public boolean sePuedeApilar(Pila origen){
-        boolean ultimaOculta = origen.getPila().lastElement().estaOculta();
-
-        if(ultimaOculta)
+    public boolean sePuedeApilar(PilaDeCartas origen, int cantidad){
+        if(origen.getUltima().estaOculta())
             return false;
 
-        boolean estoyVacia = pila.empty();
+        if(this.estaVacia())
+            return origen.getUltima().getValor() == Carta.K;
 
-        if(estoyVacia){
-            boolean esK = (origen.getPila().lastElement().getValor() == 13);
-            return esK;
-        }
 
-        boolean distintoPalo = (pila.peek().getPalo() != origen.getPila().lastElement().getPalo());
-        boolean esAntecesor = (pila.peek().esAntecesor(origen.getPila().lastElement()));
+        boolean mismoPalo = (this.getPrimera().esMismoPalo(origen.getUltima()));
+        boolean esAntecesor = (this.getPrimera().esAntecesor(origen.getUltima()));
 
-        return (distintoPalo && esAntecesor);
-    }
-
-    @Override
-    public boolean mover(Pila origen){
-        return true;
+        return (!mismoPalo && esAntecesor);
     }
 }

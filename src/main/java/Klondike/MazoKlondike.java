@@ -3,46 +3,33 @@ package Klondike;
 import Solitario.*;
 import java.util.*;
 
-public class MazoKlondike implements Mazo {
-
-    private Pila mazo;
-    private List<Pila> tableau;
+public class MazoKlondike extends Mazo {
 
     public MazoKlondike(){
-        this.mazo = new PilaDeTableauKlondike();
-        this.tableau = new ArrayList<>();
-    }
-
-    @Override
-    public Pila getMazo(){
-        return this.mazo;
+        super();
     }
 
     @Override
     public void inicializar() {
         for(Carta.Palo p : Carta.Palo.values()){
             for(int i = 1; i <= Mazo.CARTAS_POR_PALO; i++)
-                mazo.getPila().push(new Carta(i, p));
+                this.mazo.add(new Carta(i, p));
         }
     }
 
     @Override
-    public void mezclar() {
-        Collections.shuffle(mazo.getPila(), new Random(System.nanoTime()));
-    }
-
-    @Override
-    public List<Pila> repartir() {
-        Stack<Carta> aux = new Stack<>();
+    public List<PilaDeCartas> repartir() {
+        PilaDeCartas aux = new PilaDeCartas();
 
         for(int i = Klondike.CANT_PILAS_TABLEAU -1; i >= 0; i--) {
             for(int j = 0; j < Klondike.CANT_PILAS_TABLEAU -i; j++){
-                aux.push(mazo.getPila().pop());
+                aux.pushCarta(this.mazo.remove());
             }
-            tableau.add(new PilaDeTableauKlondike(aux));
-            aux = new Stack<>();
+            aux.getPila().getLast().setOculto(false);
+            this.tableau.add(aux);
+            aux = new PilaDeCartas();
         }
-        tableau.add(mazo);
+        tableau.add(new PilaDeCartas(this.mazo));
         return tableau;
     }
 }

@@ -11,15 +11,14 @@ public class MazoKlondikeTest {
     public void inicializar() {
         //arrange
         Mazo m = new MazoKlondike();
-        List<Carta> cartas = new Stack<>();
+        List<Carta> cartas;
         boolean noError = true;
         int j = 0;
         int valorEsperado = 1;
 
         //act
         m.inicializar();
-        cartas = m.getMazo().getPila();
-
+        cartas = new ArrayList<>(m.getMazo());
 
         for(Carta.Palo p : Carta.Palo.values()){
             for(int i = j; i < j+13 && j < 52 && noError; i++){
@@ -40,32 +39,32 @@ public class MazoKlondikeTest {
     public void mezclar() {
         //arrange
         Mazo m = new MazoKlondike();
-        List<Carta> aux = new Stack<>();
+        Deque<Carta> aux;
 
         //act
         m.inicializar();
-        aux.addAll(m.getMazo().getPila());
+        aux = new ArrayDeque<>(m.getMazo());
         m.mezclar();
 
         //assert
-        assertNotEquals(aux, m.getMazo().getPila());
+        assertNotEquals(aux, m.getMazo());
     }
 
     @Test
     public void repartir() {
         //arrange
         Mazo m = new MazoKlondike();
-        List<Pila> pilas = new ArrayList<>();
+        List<PilaDeCartas> pilas;
         boolean noError = true;
 
         //act
         m.inicializar();
         m.mezclar();
-        pilas = m.repartir();
+        pilas = new ArrayList<>(m.repartir());
 
         for(int i = 0; i < pilas.size(); i++){
-            if(pilas.get(i).tamanioPila() != i+1){
-                if(pilas.get(i).tamanioPila() != 24)
+            if(pilas.get(i).tamanio() != i+1){
+                if(pilas.get(i).tamanio() != 24)
                     noError = false;
             }
         }

@@ -2,34 +2,28 @@ package Klondike;
 
 import Solitario.*;
 
-public class PilaDeFoundationKlondike extends Pila {
+public class PilaDeFoundationKlondike extends PilaDeCartas {
     private final Carta.Palo paloDePila;
+
     public PilaDeFoundationKlondike(Carta.Palo paloDePila){
         super();
         this.paloDePila = paloDePila;
     }
 
     @Override
-    public boolean sePuedeApilar(Pila origen){
-        boolean esUnaCarta = (origen.tamanioPila() == 1);
-        boolean mismoPalo = (paloDePila == origen.getPila().peek().getPalo());
-
+    public boolean sePuedeApilar(PilaDeCartas origen, int cantidad){
+        boolean esUnaCarta = (origen.tamanio() == 1);
+        boolean mismoPalo = (paloDePila == origen.getPrimera().getPalo());
         if(!esUnaCarta && !mismoPalo)
             return false;
 
-        boolean esAntecesor = (pila.peek().esAntecesor(origen.getPila().peek()));
+        boolean esAntecesor = (this.getPrimera().esAntecesor(origen.getPrimera()));
 
         if(esAntecesor)
             return true;
 
-        boolean estoyVacia = pila.empty();
-        boolean esAs = (origen.getPila().peek().getValor() == 1);
-
+        boolean estoyVacia = this.estaVacia();
+        boolean esAs = (origen.getPrimera().getValor() == Carta.AS);
         return (estoyVacia && esAs);
-    }
-
-    @Override
-    public boolean mover(Pila origen){
-        return true;
     }
 }
