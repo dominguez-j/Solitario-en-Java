@@ -11,19 +11,18 @@ public class PilaDeFoundationKlondike extends PilaDeCartas {
     }
 
     @Override
-    public boolean sePuedeApilar(PilaDeCartas origen, int cantidad){
-        boolean esUnaCarta = (origen.tamanio() == 1);
-        boolean mismoPalo = (paloDePila == origen.getPrimera().getPalo());
+    public boolean sePuedeApilar(PilaDeCartas copiarAExtraer){
+        boolean esUnaCarta = (copiarAExtraer.tamanio() == 1);
+        boolean mismoPalo = (paloDePila == copiarAExtraer.getPrimera().getPalo());
         if(!esUnaCarta && !mismoPalo)
             return false;
 
-        boolean esAntecesor = (this.getPrimera().esAntecesor(origen.getPrimera()));
-
-        if(esAntecesor)
+        boolean estoyVacia = this.estaVacia();
+        boolean esAs = (copiarAExtraer.getPrimera().getValor() == Carta.AS);
+        if(estoyVacia && esAs)
             return true;
 
-        boolean estoyVacia = this.estaVacia();
-        boolean esAs = (origen.getPrimera().getValor() == Carta.AS);
-        return (estoyVacia && esAs);
+        boolean esAntecesor = (this.getPrimera().esAntecesor(copiarAExtraer.getPrimera()));
+        return esAntecesor;
     }
 }

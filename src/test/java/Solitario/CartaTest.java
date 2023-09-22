@@ -72,26 +72,14 @@ public class CartaTest {
     }
 
     @Test
-    public void setOculto() {
+    public void setVisible() {
         //arrange
         Carta carta = new Carta(5, Carta.Palo.CORAZON);
 
         //act
-        carta.setOculto(false);
+        carta.setVisible();
 
         //assert
-        assertFalse(carta.estaOculta());
-    }
-
-    @Test
-    public void setOcultoDesocultaCarta() {
-        // arrange
-        Carta carta = new Carta(5, Carta.Palo.CORAZON);
-
-        // act
-        carta.setOculto(false);
-
-        // assert
         assertFalse(carta.estaOculta());
     }
 

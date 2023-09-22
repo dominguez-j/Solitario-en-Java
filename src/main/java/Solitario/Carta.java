@@ -21,7 +21,9 @@ public class Carta {
 
     public boolean estaOculta(){return this.oculta;}
 
-    public void setOculto(boolean oculto){this.oculta = oculto;}
+    public void setVisible(){this.oculta = false;}
+
+    public void setOculta(){this.oculta = true;}
 
     public boolean esAntecesor(Carta carta){return (carta.getValor() == (this.valor -1));}
 

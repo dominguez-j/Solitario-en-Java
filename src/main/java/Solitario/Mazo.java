@@ -6,11 +6,11 @@ public abstract class Mazo{
 
     public static final int CARTAS_POR_PALO = 13;
     protected Deque<Carta> mazo;
-    protected List<PilaDeCartas> tableau;
+    protected Deque<PilaDeCartas> mazoDistribuido;
 
     public Mazo(){
         this.mazo = new ArrayDeque<>();
-        this.tableau = new ArrayList<>();
+        this.mazoDistribuido = new ArrayDeque<>();
     }
 
     public abstract void inicializar();
@@ -18,12 +18,12 @@ public abstract class Mazo{
     public void mezclar(){
         List<Carta> aux = new ArrayList<>(mazo);
         Collections.shuffle(aux, new Random(System.nanoTime()));
-        mazo = new ArrayDeque<Carta>(mazo);
+        mazo = new ArrayDeque<>(aux);
     }
 
     public Deque<Carta> getMazo(){
         return this.mazo;
     }
 
-    public abstract List<PilaDeCartas> repartir();
+    public abstract Deque<PilaDeCartas> repartir();
 }

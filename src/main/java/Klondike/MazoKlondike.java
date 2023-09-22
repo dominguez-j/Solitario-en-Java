@@ -18,18 +18,19 @@ public class MazoKlondike extends Mazo {
     }
 
     @Override
-    public List<PilaDeCartas> repartir() {
+    public Deque<PilaDeCartas> repartir() {
         PilaDeCartas aux = new PilaDeCartas();
 
         for(int i = Klondike.CANT_PILAS_TABLEAU -1; i >= 0; i--) {
             for(int j = 0; j < Klondike.CANT_PILAS_TABLEAU -i; j++){
-                aux.pushCarta(this.mazo.remove());
+                aux.pushCarta(this.mazo.pop());
             }
-            aux.getPila().getLast().setOculto(false);
-            this.tableau.add(aux);
+            aux.getPrimera().setVisible();
+            this.mazoDistribuido.add(aux);
             aux = new PilaDeCartas();
         }
-        tableau.add(new PilaDeCartas(this.mazo));
-        return tableau;
+        mazoDistribuido.add(new PilaDeCartas(this.mazo));
+        return mazoDistribuido;
     }
 }
+

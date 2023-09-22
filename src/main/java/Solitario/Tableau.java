@@ -1,16 +1,13 @@
 package Solitario;
 
-import java.util.List;
+import java.util.*;
 
 public class Tableau{
 
-    private List<PilaDeCartas> tableau;
+    private Deque<PilaDeCartas> tableau;
 
-    public Tableau(List<PilaDeCartas> tableau){
+    public Tableau(Deque<PilaDeCartas> tableau){
         this.tableau = tableau;
     }
 
-    public List<PilaDeCartas> getTableau(){
-        return this.tableau;
-    }
 }

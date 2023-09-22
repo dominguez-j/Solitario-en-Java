@@ -11,23 +11,19 @@ public class PilaDeTableauKlondike extends PilaDeCartas {
         super(tableau.getPila());
     }
 
-    public void descubrirCarta(){
-        if (this.getPrimera().estaOculta())
-            this.getPrimera().setOculto(false);
-    }
-
     @Override
-    public boolean sePuedeApilar(PilaDeCartas origen, int cantidad){
-        if(origen.getUltima().estaOculta())
+    public boolean sePuedeApilar(PilaDeCartas copiarAExtraer){
+        boolean ultimaOculta = copiarAExtraer.getUltima().estaOculta();
+        if(ultimaOculta)
             return false;
 
-        if(this.estaVacia())
-            return origen.getUltima().getValor() == Carta.K;
+        if(this.estaVacia()){
+            boolean esK = copiarAExtraer.getUltima().getValor() == Carta.K;
+            return esK;
+        }
 
-
-        boolean mismoPalo = (this.getPrimera().esMismoPalo(origen.getUltima()));
-        boolean esAntecesor = (this.getPrimera().esAntecesor(origen.getUltima()));
-
+        boolean mismoPalo = (this.getPrimera().esMismoPalo(copiarAExtraer.getUltima()));
+        boolean esAntecesor = (this.getPrimera().esAntecesor(copiarAExtraer.getUltima()));
         return (!mismoPalo && esAntecesor);
     }
 }

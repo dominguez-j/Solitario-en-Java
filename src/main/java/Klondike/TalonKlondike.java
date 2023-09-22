@@ -12,8 +12,8 @@ public class TalonKlondike extends PilaDeCartas {
 
     public void rellenarTalon(){
         for(Carta c : waste.getPila()){
-            c.setOculto(true);
-            this.getPila().add(c);
+            c.setOculta();
+            this.pushCarta(c);
         }
     }
 
@@ -21,6 +21,6 @@ public class TalonKlondike extends PilaDeCartas {
         if(this.estaVacia())
             rellenarTalon();
         this.waste.pushCarta(this.popCarta());
-        this.waste.getPila().getLast().setOculto(false);
+        this.waste.getPrimera().setVisible();
     }
 }

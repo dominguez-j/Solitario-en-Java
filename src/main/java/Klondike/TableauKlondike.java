@@ -4,7 +4,8 @@ import Solitario.*;
 import java.util.*;
 
 public class TableauKlondike extends Tableau {
-    public TableauKlondike(List<PilaDeCartas> tableau){
+    public TableauKlondike(Deque<PilaDeCartas> tableau){
         super(tableau);
     }
+
 }
