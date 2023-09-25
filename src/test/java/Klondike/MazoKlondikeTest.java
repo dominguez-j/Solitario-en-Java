@@ -44,7 +44,7 @@ public class MazoKlondikeTest {
         //act
         m.inicializar();
         aux = new ArrayDeque<>(m.getMazo());
-        m.mezclar();
+        m.mezclar(1);
 
         //assert
         assertNotEquals(aux, m.getMazo());
@@ -59,7 +59,7 @@ public class MazoKlondikeTest {
 
         //act
         m.inicializar();
-        m.mezclar();
+        m.mezclar(1);
         pilas = new ArrayList<>(m.repartir());
 
         for(int i = 0; i < pilas.size(); i++){

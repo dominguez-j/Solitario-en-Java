@@ -90,7 +90,7 @@ public class CartaTest {
         Carta carta2 = new Carta(4, Carta.Palo.CORAZON);
 
         //assert
-        assertSame(carta.getPalo(), carta2.getPalo());
+        assertTrue(carta.esMismoPalo(carta2));
     }
 
     @Test
@@ -100,6 +100,6 @@ public class CartaTest {
         Carta carta2 = new Carta(4, Carta.Palo.TREBOL);
 
         //assert
-        assertNotSame(carta.getPalo(), carta2.getPalo());
+        assertFalse(carta.esMismoPalo(carta2));
     }
 }

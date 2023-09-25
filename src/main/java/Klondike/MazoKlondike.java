@@ -20,13 +20,14 @@ public class MazoKlondike extends Mazo {
     @Override
     public Deque<PilaDeCartas> repartir() {
         PilaDeCartas aux = new PilaDeCartas();
+        Deque<PilaDeCartas> mazoDistribuido = new LinkedList<>();
 
         for(int i = Klondike.CANT_PILAS_TABLEAU -1; i >= 0; i--) {
             for(int j = 0; j < Klondike.CANT_PILAS_TABLEAU -i; j++){
                 aux.pushCarta(this.mazo.pop());
             }
             aux.getPrimera().setVisible();
-            this.mazoDistribuido.add(aux);
+            mazoDistribuido.add(aux);
             aux = new PilaDeCartas();
         }
         mazoDistribuido.add(new PilaDeCartas(this.mazo));

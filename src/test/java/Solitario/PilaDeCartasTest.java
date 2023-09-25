@@ -8,7 +8,7 @@ public class PilaDeCartasTest {
 
     @Test
     public void extraerCartas() {
-        // arrange
+        //arrange
         PilaDeCartas pila = new PilaDeCartas();
         pila.pushCarta(new Carta(5, Carta.Palo.CORAZON));
         pila.pushCarta(new Carta(4, Carta.Palo.TREBOL));
@@ -16,17 +16,17 @@ public class PilaDeCartasTest {
         pila.pushCarta(new Carta(2, Carta.Palo.TREBOL));
         pila.pushCarta(new Carta(1, Carta.Palo.DIAMANTE));
 
-        // act
+        //act
         Deque<Carta> cartasExtraidas = pila.extraerCartas(3);
 
-        // assert
+        //assert
         assertEquals(3, cartasExtraidas.size());
         assertEquals(2, pila.tamanio());
     }
 
     @Test
     public void extraerCartasVaciaPila() {
-        // arrange
+        //arrange
         PilaDeCartas pila = new PilaDeCartas();
         pila.pushCarta(new Carta(5, Carta.Palo.CORAZON));
         pila.pushCarta(new Carta(4, Carta.Palo.TREBOL));
@@ -34,17 +34,17 @@ public class PilaDeCartasTest {
         pila.pushCarta(new Carta(2, Carta.Palo.TREBOL));
         pila.pushCarta(new Carta(1, Carta.Palo.DIAMANTE));
 
-        // act
+        //act
         Deque<Carta> cartasExtraidas = pila.extraerCartas(5);
 
-        // assert
+        //assert
         assertTrue(pila.estaVacia());
         assertEquals(5, cartasExtraidas.size());
     }
 
     @Test
     public void copiarCartas() {
-        // arrange
+        //arrange
         PilaDeCartas pila = new PilaDeCartas();
         pila.pushCarta(new Carta(5, Carta.Palo.CORAZON));
         pila.getPrimera().setVisible();
@@ -52,65 +52,65 @@ public class PilaDeCartasTest {
         pila.getPrimera().setVisible();
 
 
-        // act
+        //act
         Deque<Carta> cartasCopiadas = pila.copiarCartas(2);
 
-        // assert
+        //assert
         assertEquals(2, cartasCopiadas.size());
     }
 
     @Test
     public void agregarCartasRespetaCantidad() {
-        // arrange
+        //arrange
         PilaDeCartas pila = new PilaDeCartas();
         Deque<Carta> cartas = new ArrayDeque<>();
         cartas.add(new Carta(4, Carta.Palo.CORAZON));
         cartas.add(new Carta(5, Carta.Palo.TREBOL));
 
-        // act
+        //act
         pila.agregarCartas(cartas);
 
-        // assert
+        //assert
         assertEquals(2, pila.tamanio());
     }
 
     @Test
     public void agregarCartasRespetaOrden() {
-        // arrange
+        //arrange
         PilaDeCartas pila = new PilaDeCartas();
         Deque<Carta> cartas = new ArrayDeque<>();
         cartas.add(new Carta(4, Carta.Palo.CORAZON));
         cartas.add(new Carta(5, Carta.Palo.TREBOL));
 
-        // act
+        //act
         pila.agregarCartas(cartas);
         cartas.add(new Carta(4, Carta.Palo.CORAZON));
         cartas.add(new Carta(5, Carta.Palo.TREBOL));
 
-        // assert
+        //assert
         assertEquals(pila.getPrimera().getValor(), cartas.getFirst().getValor());
     }
 
     @Test
     public void estaVacia() {
-        // arrange
+        //arrange
         PilaDeCartas pilaVacia = new PilaDeCartas();
         PilaDeCartas pilaConCarta = new PilaDeCartas();
         pilaConCarta.pushCarta(new Carta(5, Carta.Palo.CORAZON));
 
-        // assert
+        //assert
         assertTrue(pilaVacia.estaVacia());
         assertFalse(pilaConCarta.estaVacia());
     }
 
     @Test
     public void tamanio() {
-        // arrange
+        //arrange
         PilaDeCartas pila = new PilaDeCartas();
         pila.pushCarta(new Carta(5, Carta.Palo.CORAZON));
         pila.pushCarta(new Carta(4, Carta.Palo.TREBOL));
 
-        // assert
+        //assert
         assertEquals(2, pila.tamanio());
     }
 }

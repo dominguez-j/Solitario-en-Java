@@ -9,9 +9,9 @@ public class PilaDeCartas {
     public boolean sePuedeApilar(PilaDeCartas copiarAExtraer){return false;}
 
     public Deque<Carta> extraerCartas(int cantidad){
-        Deque<Carta> cartasExtraidas = new ArrayDeque<>();
+        Deque<Carta> cartasExtraidas = new LinkedList<>();
 
-        for(int i=0; i < cantidad; i++)
+        for(int i = 0; i < cantidad; i++)
             cartasExtraidas.add(this.popCarta());
 
         if(this.tamanio() > 0)
@@ -21,7 +21,7 @@ public class PilaDeCartas {
     }
 
     public Deque<Carta> copiarCartas(int cantidad){
-        Deque<Carta> cartasCopiadas = new ArrayDeque<>();
+        Deque<Carta> cartasCopiadas = new LinkedList<>();
         boolean error = false;
         Iterator<Carta> iterador = this.pila.iterator();
         int i = 0;
@@ -39,12 +39,14 @@ public class PilaDeCartas {
     }
 
     public void agregarCartas(Deque<Carta> Cartas){
-        for(int i = 0; i <= Cartas.size(); i++){
-            this.pila.push(Cartas.pollLast());
-        }
+        int size = Cartas.size();
+
+        for(int i = 0; i < size; i++)
+            this.pushCarta(Cartas.pollLast());
+
     }
 
-    public PilaDeCartas(){this.pila = new ArrayDeque<>();}
+    public PilaDeCartas(){this.pila = new LinkedList<>();}
 
     public PilaDeCartas(Deque<Carta> pila){this.pila = pila;}
 
@@ -61,4 +63,6 @@ public class PilaDeCartas {
     public void pushCarta(Carta carta){this.pila.push(carta);}
 
     public Carta popCarta(){return this.pila.pop();}
+
+    public void limpiarPila(){this.pila.clear();}
 }

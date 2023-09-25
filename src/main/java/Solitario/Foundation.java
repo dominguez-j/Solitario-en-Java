@@ -3,11 +3,11 @@ package Solitario;
 import java.util.*;
 
 public class Foundation {
-    private final List<PilaDeCartas> foundation;
+    private final Deque<? extends PilaDeCartas> foundation;
 
-    public Foundation(List<PilaDeCartas> foundation){
-        this.foundation = foundation;
-    }
+    public Foundation(Deque<? extends PilaDeCartas> foundation){this.foundation = foundation;}
+
+    public Deque<? extends PilaDeCartas> getPilasFoundation(){return this.foundation;}
 
     public boolean estaCompleto(){
         for(PilaDeCartas p : foundation){

@@ -7,4 +7,5 @@ public class Waste extends PilaDeCartas {
     public Waste(){
         super();
     }
+
 }

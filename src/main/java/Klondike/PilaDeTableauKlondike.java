@@ -17,7 +17,8 @@ public class PilaDeTableauKlondike extends PilaDeCartas {
         if(ultimaOculta)
             return false;
 
-        if(this.estaVacia()){
+        boolean estoyVacia = this.estaVacia();
+        if(estoyVacia){
             boolean esK = copiarAExtraer.getUltima().getValor() == Carta.K;
             return esK;
         }
