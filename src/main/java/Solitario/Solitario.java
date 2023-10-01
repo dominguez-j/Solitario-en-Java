@@ -5,7 +5,9 @@ public abstract class Solitario {
     protected Foundation foundation;
     protected Tableau tableau;
 
-    public abstract void empezarJuego(int semilla);
+    public abstract void empezarJuego(long semilla);
+
+    public abstract void empezarJuego();
 
     /**
      * Determina si un movimiento es válido.

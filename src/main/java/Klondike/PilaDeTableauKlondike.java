@@ -3,19 +3,16 @@ package Klondike;
 import Solitario.*;
 
 public class PilaDeTableauKlondike extends PilaDeCartas {
-    public PilaDeTableauKlondike(){
-        super();
-    }
+    public PilaDeTableauKlondike(){super();}
 
-    public PilaDeTableauKlondike(PilaDeCartas tableau){
-        super(tableau.getPila());
-    }
+    public PilaDeTableauKlondike(PilaDeCartas tableau){super(tableau.getPila());}
 
     @Override
     public boolean sePuedeApilar(PilaDeCartas copiarAExtraer){
-        boolean ultimaOculta = copiarAExtraer.getUltima().estaOculta();
-        if(ultimaOculta)
-            return false;
+        if(copiarAExtraer.getPila() == null) return false;
+
+        boolean estaVacia = copiarAExtraer.estaVacia();
+        if(estaVacia) return false;
 
         boolean estoyVacia = this.estaVacia();
         if(estoyVacia){
@@ -23,8 +20,8 @@ public class PilaDeTableauKlondike extends PilaDeCartas {
             return esK;
         }
 
-        boolean mismoPalo = (this.getPrimera().esMismoPalo(copiarAExtraer.getUltima()));
+        boolean esColorOpuesto = (this.getPrimera().esColorOpuesto(copiarAExtraer.getUltima()));
         boolean esAntecesor = (this.getPrimera().esAntecesor(copiarAExtraer.getUltima()));
-        return (!mismoPalo && esAntecesor);
+        return (esColorOpuesto && esAntecesor);
     }
 }

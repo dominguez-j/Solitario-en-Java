@@ -5,9 +5,7 @@ import java.util.*;
 
 public class MazoKlondike extends Mazo {
 
-    public MazoKlondike(){
-        super();
-    }
+    public MazoKlondike(){super();}
 
     @Override
     public void inicializar() {

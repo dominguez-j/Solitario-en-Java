@@ -13,9 +13,20 @@ public class Klondike extends Solitario {
     }
 
     @Override
-    public void empezarJuego(int semilla){
+    public void empezarJuego(long semilla){
         mazo.inicializar();
         mazo.mezclar(semilla);
+        llenarJuego();
+    }
+
+    @Override
+    public void empezarJuego(){
+        mazo.inicializar();
+        mazo.mezclar(System.currentTimeMillis());
+        llenarJuego();
+    }
+
+    private void llenarJuego(){
         Deque<PilaDeCartas> mazoDistribuido = mazo.repartir();
         talon = new TalonKlondike(mazoDistribuido.removeLast(), waste);
         tableau = new Tableau(mazoDistribuido);
@@ -38,10 +49,8 @@ public class Klondike extends Solitario {
             return false;
 
         PilaDeCartas copiaAExtraer = new PilaDeCartas(origen.copiarCartas(cantidad));
-        if(!copiaAExtraer.estaVacia())
-            return destino.sePuedeApilar(copiaAExtraer);
-        return false;
+        return destino.sePuedeApilar(copiaAExtraer);
     }
 
-    public Waste getWaste(){ return this.waste; }
+    public Waste getWaste(){return this.waste;}
 }

@@ -64,9 +64,7 @@ public class PilaDeCartas {
      *
      * @param Cartas El deque de cartas que se desea agregar al deque del objeto actual.
      */
-    public void agregarCartas(Deque<Carta> Cartas){
-        this.pila.addAll(Cartas);
-    }
+    public void agregarCartas(Deque<Carta> Cartas){this.pila.addAll(Cartas);}
 
     public PilaDeCartas(){this.pila = new LinkedList<>();}
 

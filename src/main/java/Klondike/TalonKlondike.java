@@ -4,6 +4,7 @@ import Solitario.*;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.LinkedList;
 
 public class TalonKlondike extends PilaDeCartas {
     private Waste waste;
@@ -23,18 +24,6 @@ public class TalonKlondike extends PilaDeCartas {
             this.pushCarta(c);
         }
         this.waste.limpiarPila();
-    }
-
-    @Override
-    public Deque<Carta> copiarCartas(int cantidad){
-        if (cantidad != 1) {
-            return null;
-        }
-
-        Deque<Carta> cartasCopiadas = new ArrayDeque<>();
-        cartasCopiadas.add(this.getPrimera());
-
-        return cartasCopiadas;
     }
 
     /**
