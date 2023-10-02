@@ -43,14 +43,5 @@ public class Klondike extends Solitario {
         this.tableau = tableau;
     }
 
-    @Override
-    public boolean esMovimientoValido(PilaDeCartas origen, PilaDeCartas destino, int cantidad){
-        if(cantidad <= 0)
-            return false;
-
-        PilaDeCartas copiaAExtraer = new PilaDeCartas(origen.copiarCartas(cantidad));
-        return destino.sePuedeApilar(copiaAExtraer);
-    }
-
     public Waste getWaste(){return this.waste;}
 }

@@ -17,7 +17,13 @@ public abstract class Solitario {
      * @param cantidad La cantidad de cartas que se intentan mover.
      * @return true si el movimiento es válido, false en caso contrario.
      */
-    public abstract boolean esMovimientoValido(PilaDeCartas origen, PilaDeCartas destino, int cantidad);
+    public boolean esMovimientoValido(PilaDeCartas origen, PilaDeCartas destino, int cantidad){
+        if(cantidad <= 0)
+            return false;
+
+        PilaDeCartas copiaAExtraer = new PilaDeCartas(origen.copiarCartas(cantidad));
+        return destino.sePuedeApilar(copiaAExtraer);
+    }
 
     /**
      * Mueve las cartas de una pila a otra.

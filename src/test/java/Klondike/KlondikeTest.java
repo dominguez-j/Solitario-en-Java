@@ -505,7 +505,7 @@ public class KlondikeTest {
 	}
 
 	@Test
-	public void ganarPartida() {
+	public void ganarPartidaParcialmente() {
 		//arrange
 		Klondike k = new Klondike();
 		MazoKlondike m = new MazoKlondike();
