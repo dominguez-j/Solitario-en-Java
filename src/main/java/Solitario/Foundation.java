@@ -3,6 +3,7 @@ package Solitario;
 import java.util.*;
 
 public class Foundation {
+
     private Deque<? extends PilaDeCartas> foundation;
 
     public Foundation(Deque<? extends PilaDeCartas> foundation){this.foundation = foundation;}
@@ -16,5 +17,4 @@ public class Foundation {
         }
         return true;
     }
-
 }

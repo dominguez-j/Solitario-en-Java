@@ -1,13 +1,24 @@
 package Solitario;
 public abstract class Solitario {
+
     protected Mazo mazo;
     protected PilaDeCartas talon;
     protected Foundation foundation;
     protected Tableau tableau;
 
-    public abstract void empezarJuego(long semilla);
+    public void empezarJuego(int cant_palos, long semilla){
+        mazo.inicializar(cant_palos);
+        mazo.mezclar(semilla);
+        llenarJuego();
+    }
 
-    public abstract void empezarJuego();
+    public void empezarJuego(int cant_palos){
+        mazo.inicializar(cant_palos);
+        mazo.mezclar(System.currentTimeMillis());
+        llenarJuego();
+    }
+
+    public abstract void llenarJuego();
 
     /**
      * Determina si un movimiento es válido.

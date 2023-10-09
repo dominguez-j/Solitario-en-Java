@@ -111,7 +111,7 @@ public class MazoSpiderTest {
 		boolean noError = true;
 
 		//act
-		m.inicializar();
+		m.inicializar(MazoSpider.UN_PALO);
 		m.mezclar(1);
 		pilas = new ArrayList<>(m.repartir());
 

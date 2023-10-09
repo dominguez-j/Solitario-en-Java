@@ -8,7 +8,7 @@ public class MazoKlondike extends Mazo {
     public MazoKlondike(){super();}
 
     @Override
-    public void inicializar() {
+    public void inicializar(int cant_palos) {
         for(Carta.Palo p : Carta.Palo.values()){
             for(int i = 1; i <= Mazo.CARTAS_POR_PALO; i++)
                 this.mazo.add(new Carta(i, p));

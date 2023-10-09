@@ -44,7 +44,7 @@ public class PilaDeCartas {
 
         Deque<Carta> cartasCopiadas = new LinkedList<>();
         boolean error = false;
-        Iterator<Carta> iterador = this.pila.iterator();
+        Iterator<Carta> iterador = this.getPila().iterator();
         int i = 0;
 
         while(i < cantidad && iterador.hasNext() && !error){

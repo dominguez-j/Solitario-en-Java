@@ -13,8 +13,7 @@ public class KlondikeTest {
 	public void empezarJuegoDesdeSemillaCreaTodo() {
 		//arrange
 		Klondike k = new Klondike();
-		k.empezarJuego(SEED);
-
+		k.empezarJuego(0, SEED);
 
 		//assert
 		assertNotNull(k.getTalon());
@@ -27,8 +26,7 @@ public class KlondikeTest {
 	public void empezarJuegoDesdeSemillaAleatoriaCreaTodo() {
 		//arrange
 		Klondike k = new Klondike();
-		k.empezarJuego();
-
+		k.empezarJuego(0);
 
 		//assert
 		assertNotNull(k.getTalon());
@@ -61,7 +59,6 @@ public class KlondikeTest {
 	public void moverUnaCartaDeWasteATableauNoEsValidoPorNumero() {
 		//arrange
 		Klondike k = new Klondike();
-
 		Waste waste = new Waste();
 		PilaDeTableauKlondike pilaTableau = new PilaDeTableauKlondike();
 		Carta carta_waste = new Carta(6, Carta.Palo.DIAMANTE);
@@ -509,7 +506,7 @@ public class KlondikeTest {
 		//arrange
 		Klondike k = new Klondike();
 		MazoKlondike m = new MazoKlondike();
-		m.inicializar();
+		m.inicializar(0);
 		PilaDeFoundationKlondike CORAZON = new PilaDeFoundationKlondike(Carta.Palo.CORAZON);
 		PilaDeFoundationKlondike TREBOL = new PilaDeFoundationKlondike(Carta.Palo.TREBOL);
 		PilaDeFoundationKlondike DIAMANTE = new PilaDeFoundationKlondike(Carta.Palo.DIAMANTE);

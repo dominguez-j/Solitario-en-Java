@@ -1,11 +1,11 @@
 package Spider;
-import Klondike.Klondike;
-import Solitario.*;
 
+import Solitario.*;
 import java.util.Deque;
 import java.util.LinkedList;
 
 public class MazoSpider extends Mazo {
+
 	public static final int UN_PALO = 1;
 	public static final int DOS_PALO = 2;
 	public static final int CUATRO_PALO = 4;
@@ -13,10 +13,6 @@ public class MazoSpider extends Mazo {
 	public MazoSpider(){super();}
 
 	@Override
-	public void inicializar(){
-		inicializar(UN_PALO);
-	}
-
 	public void inicializar(int cant_palos){
 		if(cant_palos != UN_PALO && cant_palos != DOS_PALO && cant_palos != CUATRO_PALO)
 			return;
@@ -38,9 +34,8 @@ public class MazoSpider extends Mazo {
 			int k = 0;
 			if(i < Spider.CANT_PILAS_TABLEAU / 2) k = 1;
 
-			for(int j = 0; j < Spider.CANT_PILAS_TABLEAU / 2 + k; j++){
+			for(int j = 0; j < Spider.CANT_PILAS_TABLEAU / 2 + k; j++)
 				aux.pushCarta(this.mazo.pop());
-			}
 
 			aux.getPrimera().setVisible();
 			mazoDistribuido.add(aux);

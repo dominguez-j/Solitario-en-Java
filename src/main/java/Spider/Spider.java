@@ -12,24 +12,24 @@ public class Spider extends Solitario {
 		this.mazo = new MazoSpider();
 	}
 
-	@Override
-	public void empezarJuego(long semilla){
-		mazo.inicializar();
+	public void empezarJuego(int cant_palos, long semilla){
+		mazo.inicializar(cant_palos);
 		mazo.mezclar(semilla);
 		llenarJuego();
 	}
 
-	@Override
-	public void empezarJuego(){
-		mazo.inicializar();
+	public void empezarJuego(int cant_palos){
+		mazo.inicializar(cant_palos);
 		mazo.mezclar(System.currentTimeMillis());
 		llenarJuego();
 	}
 
-	private void llenarJuego(){
+	@Override
+	public void llenarJuego(){
 		Deque<PilaDeCartas> mazoDistribuido = mazo.repartir();
-		this.talon = new TalonSpider(mazoDistribuido.removeLast());
+		PilaDeCartas talon = mazoDistribuido.removeLast();
 		this.tableau = new Tableau(mazoDistribuido);
+		this.talon = new TalonSpider(talon, this.tableau);
 		Deque<PilaDeCartas> foundation = new LinkedList<>();
 		this.foundation = new Foundation(foundation);
 	}

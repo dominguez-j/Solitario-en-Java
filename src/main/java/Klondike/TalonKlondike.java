@@ -2,11 +2,8 @@ package Klondike;
 
 import Solitario.*;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.LinkedList;
-
 public class TalonKlondike extends PilaDeCartas {
+
     private Waste waste;
 
     public TalonKlondike(PilaDeCartas talon, Waste waste){

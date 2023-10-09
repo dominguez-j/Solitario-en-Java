@@ -11,7 +11,7 @@ public class SpiderTest {
 	public void empezarJuegoDesdeSemillaCreaTodo() {
 		//arrange
 		Spider s = new Spider();
-		s.empezarJuego(SEED);
+		s.empezarJuego(MazoSpider.UN_PALO, SEED);
 
 
 		//assert
@@ -24,7 +24,7 @@ public class SpiderTest {
 	public void empezarJuegoDesdeSemillaAleatoriaCreaTodo() {
 		//arrange
 		Spider s = new Spider();
-		s.empezarJuego();
+		s.empezarJuego(MazoSpider.UN_PALO);
 
 
 		//assert

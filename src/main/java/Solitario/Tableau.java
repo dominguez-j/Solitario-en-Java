@@ -2,7 +2,7 @@ package Solitario;
 
 import java.util.*;
 
-public class Tableau{
+public class Tableau {
 
     private Deque<? extends PilaDeCartas> tableau;
 

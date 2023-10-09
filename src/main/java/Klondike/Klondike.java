@@ -4,6 +4,7 @@ import Solitario.*;
 import java.util.*;
 
 public class Klondike extends Solitario {
+
     public static final int CANT_PILAS_TABLEAU = 7;
     private Waste waste;
 
@@ -13,20 +14,7 @@ public class Klondike extends Solitario {
     }
 
     @Override
-    public void empezarJuego(long semilla){
-        mazo.inicializar();
-        mazo.mezclar(semilla);
-        llenarJuego();
-    }
-
-    @Override
-    public void empezarJuego(){
-        mazo.inicializar();
-        mazo.mezclar(System.currentTimeMillis());
-        llenarJuego();
-    }
-
-    private void llenarJuego(){
+    public void llenarJuego(){
         Deque<PilaDeCartas> mazoDistribuido = mazo.repartir();
         talon = new TalonKlondike(mazoDistribuido.removeLast(), waste);
         tableau = new Tableau(mazoDistribuido);
