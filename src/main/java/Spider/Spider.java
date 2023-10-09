@@ -8,9 +8,7 @@ public class Spider extends Solitario {
 	public static final int CANT_PILAS_TABLEAU = 10;
 	public static final int CANT_PILAS_FOUNDATION = 8;
 
-	public Spider(){
-		this.mazo = new MazoSpider();
-	}
+	public Spider(){this.mazo = new MazoSpider();}
 
 	public void empezarJuego(int cant_palos, long semilla){
 		mazo.inicializar(cant_palos);
@@ -27,9 +25,8 @@ public class Spider extends Solitario {
 	@Override
 	public void llenarJuego(){
 		Deque<PilaDeCartas> mazoDistribuido = mazo.repartir();
-		PilaDeCartas talon = mazoDistribuido.removeLast();
+		this.talon = new TalonSpider(talon);
 		this.tableau = new Tableau(mazoDistribuido);
-		this.talon = new TalonSpider(talon, this.tableau);
 		Deque<PilaDeCartas> foundation = new LinkedList<>();
 		this.foundation = new Foundation(foundation);
 	}

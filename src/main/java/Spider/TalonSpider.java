@@ -4,14 +4,9 @@ import Solitario.*;
 
 public class TalonSpider extends PilaDeCartas {
 
-	private Tableau tableau;
+	public TalonSpider(PilaDeCartas talon){super(talon.getPila());}
 
-	public TalonSpider(PilaDeCartas talon, Tableau tableau){
-		super(talon.getPila());
-		this.tableau = tableau;
-	}
-
-	public void robarCarta(){
+	public void robarCarta(Tableau tableau){
 		if(this.estaVacia())
 			return;
 

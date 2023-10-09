@@ -15,7 +15,7 @@ public class TalonSpiderTest {
 		TalonSpider t = (TalonSpider) s.getTalon();
 
 		//act
-		t.robarCarta();
+		t.robarCarta(s.getTableau());
 
 		//assert
 	}
