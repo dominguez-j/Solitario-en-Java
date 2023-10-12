@@ -5,6 +5,8 @@ import java.util.*;
 
 public class MazoKlondike extends Mazo {
 
+    public final int CANT_PILAS_TABLEAU = 7;
+
     public MazoKlondike(){super();}
 
     @Override
@@ -20,8 +22,8 @@ public class MazoKlondike extends Mazo {
         PilaDeCartas aux = new PilaDeCartas();
         Deque<PilaDeCartas> mazoDistribuido = new LinkedList<>();
 
-        for(int i = Klondike.CANT_PILAS_TABLEAU -1; i >= 0; i--) {
-            for(int j = 0; j < Klondike.CANT_PILAS_TABLEAU -i; j++){
+        for(int i = CANT_PILAS_TABLEAU -1; i >= 0; i--) {
+            for(int j = 0; j < CANT_PILAS_TABLEAU -i; j++){
                 aux.pushCarta(this.mazo.pop());
             }
             aux.getPrimera().setVisible();
