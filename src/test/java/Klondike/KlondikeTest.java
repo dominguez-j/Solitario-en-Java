@@ -542,7 +542,7 @@ public class KlondikeTest {
 		k.moverCartas(c1, CORAZON, 1);
 
 		//assert
-		assertTrue(k.ganarJuego());
+		assertTrue(k.verificarVictoria());
 	}
 
 	@Test
@@ -708,6 +708,6 @@ public class KlondikeTest {
 		k.moverCartas(c5, CORAZON, 1);
 
 		//assert
-		assertTrue(k.ganarJuego());
+		assertTrue(k.verificarVictoria());
 	}
 }

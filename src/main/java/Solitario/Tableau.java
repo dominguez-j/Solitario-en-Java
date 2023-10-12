@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Tableau {
 
-    private Deque<? extends PilaDeCartas> tableau;
+    private final Deque<? extends PilaDeCartas> tableau;
 
     public Tableau(Deque<? extends PilaDeCartas> tableau){this.tableau = tableau;}
 

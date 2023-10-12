@@ -4,7 +4,7 @@ import java.util.*;
 
 public class PilaDeCartas {
 
-    private Deque<Carta> pila;
+    private final Deque<Carta> pila;
 
     /**
      * Determina si es posible apilar la copia en la pila de cartas.

@@ -28,21 +28,26 @@ public class PilaDeFoundationKlondike extends PilaDeCartas {
 
     @Override
     public boolean sePuedeApilar(PilaDeCartas copiarAExtraer) {
-        if(copiarAExtraer.getPila() == null) return false;
+        if (noEsUnaCartaValida(copiarAExtraer))
+            return false;
 
-        boolean esUnaCarta = (copiarAExtraer.tamanio() == 1);
-        if(!esUnaCarta) return false;
+        if (this.estaVacia())
+            return sePuedeApilarSobrePilaVacia(copiarAExtraer);
+        else
+            return sePuedeApilarSobrePilaNoVacia(copiarAExtraer);
+    }
 
+    private boolean noEsUnaCartaValida(PilaDeCartas copiarAExtraer) {
+        return copiarAExtraer == null || copiarAExtraer.tamanio() != 1;
+    }
+
+    private boolean sePuedeApilarSobrePilaVacia(PilaDeCartas copiarAExtraer) {
+        return copiarAExtraer.getPrimera().getValor() == Carta.AS;
+    }
+
+    private boolean sePuedeApilarSobrePilaNoVacia(PilaDeCartas copiarAExtraer) {
         boolean mismoPalo = paloDePila == copiarAExtraer.getPrimera().getPalo();
-        if(!mismoPalo) return false;
-
-        boolean estoyVacia = this.estaVacia();
-        if(estoyVacia){
-            boolean esAs = (copiarAExtraer.getPrimera().getValor() == Carta.AS);
-            return esAs;
-        }
-
-        boolean esAntecesor = (copiarAExtraer.getPrimera().esAntecesor(this.getPrimera()));
-        return esAntecesor;
+        boolean esAntecesor = copiarAExtraer.getPrimera().esAntecesor(this.getPrimera());
+        return mismoPalo && esAntecesor;
     }
 }

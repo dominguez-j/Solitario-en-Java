@@ -4,7 +4,7 @@ import Solitario.*;
 
 public class TalonKlondike extends PilaDeCartas {
 
-    private Waste waste;
+    private final Waste waste;
 
     public TalonKlondike(PilaDeCartas talon, Waste waste){
         super(talon.getPila());

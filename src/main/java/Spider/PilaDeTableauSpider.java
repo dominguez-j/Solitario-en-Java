@@ -24,7 +24,12 @@ public class PilaDeTableauSpider extends PilaDeCartas {
 		return this.getPrimera().esAntecesor(copiaAExtraer.getUltima());
 	}
 
-	public void moverPilaDeTableauParaFoundation(Foundation foundation){
+	/**
+	 * Intenta mover cartas del tableau al foundation si se cumplen las condiciones.
+	 *
+	 * @param foundation El objeto que representa el foundation en el juego.
+	 */
+	public void moverCartasAlFoundationSiEsPosible(Foundation foundation){
 		if (this.tamanio() < Mazo.CARTAS_POR_PALO) return;
 
 		Iterator<Carta> iterador = this.getPila().iterator();
@@ -42,6 +47,12 @@ public class PilaDeTableauSpider extends PilaDeCartas {
 		}
 	}
 
+	/**
+	 * Verifica si una pila de cartas en el tableau de Spider cumple con las condiciones para ser movida al foundation.
+	 *
+	 * @param iterador Iterador que recorre las cartas en la pila de tableau.
+	 * @return True si la pila es válida para ser movida al foundation, false en caso contrario.
+	 */
 	private boolean validarPila(Iterator<Carta> iterador){
 		boolean esAntecesor;
 		boolean esMismoPalo;

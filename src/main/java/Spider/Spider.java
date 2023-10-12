@@ -22,6 +22,12 @@ public class Spider extends Solitario {
 		llenarJuego();
 	}
 
+	public void empezarJuego(TalonSpider talon, Foundation foundation, Tableau tableau){
+		this.talon = talon;
+		this.foundation = foundation;
+		this.tableau = tableau;
+	}
+
 	@Override
 	public void llenarJuego(){
 		Deque<PilaDeCartas> mazoDistribuido = mazo.repartir();
@@ -31,9 +37,9 @@ public class Spider extends Solitario {
 		this.foundation = new Foundation(foundation);
 	}
 
-	public void empezarJuego(TalonSpider talon, Foundation foundation, Tableau tableau){
-		this.talon = talon;
-		this.foundation = foundation;
-		this.tableau = tableau;
+	@Override
+	public void moverCartas(PilaDeCartas origen, PilaDeCartas destino, int cantidad){
+		destino.agregarCartas(origen.extraerCartas(cantidad));
+		((PilaDeTableauSpider)destino).moverCartasAlFoundationSiEsPosible(this.foundation);
 	}
 }

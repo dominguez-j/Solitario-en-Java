@@ -47,7 +47,7 @@ public abstract class Solitario {
         destino.agregarCartas(origen.extraerCartas(cantidad));
     }
 
-    public boolean ganarJuego(){return foundation.estaCompleto();}
+    public boolean verificarVictoria(){return foundation.estaCompleto();}
 
     public PilaDeCartas getTalon(){return this.talon;}
 
