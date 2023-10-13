@@ -8,18 +8,18 @@ public class PilaDeTableauKlondike extends PilaDeCartas {
     public PilaDeTableauKlondike(PilaDeCartas tableau){super(tableau.getPila());}
 
     @Override
-    public boolean sePuedeApilar(PilaDeCartas copiarAExtraer) {
-        if (copiarAExtraer == null || copiarAExtraer.estaVacia())
+    public boolean sePuedeApilar(PilaDeCartas copiaAExtraer) {
+        if (copiaAExtraer == null || copiaAExtraer.estaVacia())
             return false;
 
         if (this.estaVacia())
-            return sePuedeApilarSobreVacia(copiarAExtraer);
+            return sePuedeApilarSobreVacia(copiaAExtraer);
 
-        return sePuedeApilarSobreNoVacia(copiarAExtraer);
+        return sePuedeApilarSobreNoVacia(copiaAExtraer);
     }
 
-    private boolean sePuedeApilarSobreVacia(PilaDeCartas copiarAExtraer) {
-        return copiarAExtraer.getUltima().getValor() == Carta.K;
+    private boolean sePuedeApilarSobreVacia(PilaDeCartas copiaAExtraer) {
+        return copiaAExtraer.getUltima().getValor() == Carta.K;
     }
 
     private boolean sePuedeApilarSobreNoVacia(PilaDeCartas copiarAExtraer) {

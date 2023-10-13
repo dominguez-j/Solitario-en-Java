@@ -38,7 +38,7 @@ public class PilaDeFoundationKlondike extends PilaDeCartas {
     }
 
     private boolean noEsUnaCartaValida(PilaDeCartas copiarAExtraer) {
-        return copiarAExtraer == null || copiarAExtraer.tamanio() != 1;
+        return copiarAExtraer.getPila() == null || copiarAExtraer.tamanio() != 1;
     }
 
     private boolean sePuedeApilarSobrePilaVacia(PilaDeCartas copiarAExtraer) {

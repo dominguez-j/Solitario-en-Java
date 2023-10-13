@@ -11,17 +11,19 @@ public class PilaDeTableauSpider extends PilaDeCartas {
 
 	@Override
 	public boolean sePuedeApilar(PilaDeCartas copiaAExtraer){
-		if (copiaAExtraer.getPila() == null) return false;
-		if (copiaAExtraer.estaVacia()) return false;
+		if (noEsUnTamanioDePilaValido(copiaAExtraer)) return false;
 
 		boolean esValida = validarPila(copiaAExtraer.getPila().iterator());
 
 		if (!esValida) return false;
 
-		boolean estoyVacia = this.estaVacia();
-		if (estoyVacia) return true;
+		if (this.estaVacia()) return true;
 
 		return this.getPrimera().esAntecesor(copiaAExtraer.getUltima());
+	}
+
+	private boolean noEsUnTamanioDePilaValido(PilaDeCartas copiaAExtraer) {
+		return copiaAExtraer.getPila() == null || copiaAExtraer.tamanio() != 1;
 	}
 
 	/**
