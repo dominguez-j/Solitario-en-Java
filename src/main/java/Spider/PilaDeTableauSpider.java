@@ -56,18 +56,12 @@ public class PilaDeTableauSpider extends PilaDeCartas {
 	 * @return True si la pila es válida para ser movida al foundation, false en caso contrario.
 	 */
 	private boolean validarPila(Iterator<Carta> iterador){
-		boolean esAntecesor;
-		boolean esMismoPalo;
-		boolean estaOculta;
 		boolean error = false;
 		Carta aux = iterador.next();
 
 		while(iterador.hasNext() && !error){
 			Carta c = iterador.next();
-			esMismoPalo = aux.esMismoPalo(c);
-			esAntecesor  = aux.esAntecesor(c);
-			estaOculta = aux.estaOculta();
-			if(!esMismoPalo || !esAntecesor || estaOculta)
+			if(!aux.esMismoPalo(c) || !aux.esAntecesor(c) || aux.estaOculta())
 				error = true;
 			aux = c;
 		}
