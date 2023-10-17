@@ -384,6 +384,7 @@ public class KlondikeTest {
 				c1.pushCarta(c);
 			}
 		}
+		//assert
 		assertFalse(k.esMovimientoValido(c1, f, 3));
 	}
 
@@ -420,7 +421,7 @@ public class KlondikeTest {
 				c2.pushCarta(c);
 			}
 		}
-
+		//assert
 		assertTrue(k.esMovimientoValido(c1, c2, 4));
 	}
 

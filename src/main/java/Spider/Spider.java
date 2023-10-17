@@ -5,9 +5,6 @@ import java.util.*;
 
 public class Spider extends Solitario {
 
-	public static final int CANT_PILAS_TABLEAU = 10;
-	public static final int CANT_PILAS_FOUNDATION = 8;
-
 	public Spider(){this.mazo = new MazoSpider();}
 
 	public void empezarJuego(int cant_palos, long semilla){
@@ -31,15 +28,18 @@ public class Spider extends Solitario {
 	@Override
 	public void llenarJuego(){
 		Deque<PilaDeCartas> mazoDistribuido = mazo.repartir();
-		this.talon = new TalonSpider(talon);
+		this.talon = new TalonSpider(mazoDistribuido.removeLast());
 		this.tableau = new Tableau(mazoDistribuido);
 		Deque<PilaDeCartas> foundation = new LinkedList<>();
+		for (int i = 0; i < MazoSpider.CANT_PILAS_FOUNDATION; i++)
+			foundation.add(new PilaDeCartas());
 		this.foundation = new Foundation(foundation);
 	}
 
 	@Override
 	public void moverCartas(PilaDeCartas origen, PilaDeCartas destino, int cantidad){
 		destino.agregarCartas(origen.extraerCartas(cantidad));
-		((PilaDeTableauSpider)destino).moverCartasAlFoundationSiEsPosible(this.foundation);
+		PilaDeTableauSpider t = new PilaDeTableauSpider(destino);
+		t.moverCartasAlFoundationSiEsPosible(this.foundation);
 	}
 }

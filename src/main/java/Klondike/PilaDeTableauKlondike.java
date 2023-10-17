@@ -9,7 +9,7 @@ public class PilaDeTableauKlondike extends PilaDeCartas {
 
     @Override
     public boolean sePuedeApilar(PilaDeCartas copiaAExtraer) {
-        if (copiaAExtraer == null || copiaAExtraer.estaVacia())
+        if (noEsUnaPilaValida(copiaAExtraer))
             return false;
 
         if (this.estaVacia())
@@ -18,13 +18,19 @@ public class PilaDeTableauKlondike extends PilaDeCartas {
         return sePuedeApilarSobreNoVacia(copiaAExtraer);
     }
 
-    private boolean sePuedeApilarSobreVacia(PilaDeCartas copiaAExtraer) {
-        return copiaAExtraer.getUltima().getValor() == Carta.K;
+    private boolean noEsUnaPilaValida(PilaDeCartas copiaAExtraer) {
+        return copiaAExtraer == null || copiaAExtraer.getPila() == null ||copiaAExtraer.estaVacia();
     }
 
-    private boolean sePuedeApilarSobreNoVacia(PilaDeCartas copiarAExtraer) {
-        boolean esColorOpuesto = this.getPrimera().esColorOpuesto(copiarAExtraer.getUltima());
-        boolean esAntecesor = this.getPrimera().esAntecesor(copiarAExtraer.getUltima());
+    private boolean sePuedeApilarSobreVacia(PilaDeCartas copiaAExtraer) {
+        boolean esK = copiaAExtraer.getUltima().getValor() == Carta.K;
+        boolean estaOculta = copiaAExtraer.getUltima().estaOculta();
+        return esK && !estaOculta;
+    }
+
+    private boolean sePuedeApilarSobreNoVacia(PilaDeCartas copiaAExtraer) {
+        boolean esColorOpuesto = this.getPrimera().esColorOpuesto(copiaAExtraer.getUltima());
+        boolean esAntecesor = this.getPrimera().esAntecesor(copiaAExtraer.getUltima());
         return esColorOpuesto && esAntecesor;
     }
 }

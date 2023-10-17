@@ -1,7 +1,11 @@
 package Spider;
 
 import Solitario.*;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 public class PilaDeTableauSpider extends PilaDeCartas {
 
@@ -23,7 +27,7 @@ public class PilaDeTableauSpider extends PilaDeCartas {
 	}
 
 	private boolean noEsUnTamanioDePilaValido(PilaDeCartas copiaAExtraer) {
-		return copiaAExtraer.getPila() == null || copiaAExtraer.tamanio() != 1;
+		return copiaAExtraer == null || copiaAExtraer.getPila() == null || copiaAExtraer.tamanio() == 0;
 	}
 
 	/**
@@ -34,8 +38,11 @@ public class PilaDeTableauSpider extends PilaDeCartas {
 	public void moverCartasAlFoundationSiEsPosible(Foundation foundation){
 		if (this.tamanio() < Mazo.CARTAS_POR_PALO) return;
 
-		Iterator<Carta> iterador = this.getPila().iterator();
-		if (iterador.next().getValor() != Carta.AS) return;
+		Deque<Carta> primerasTreceCartas = this.copiarCartas(MazoSpider.CARTAS_POR_PALO);
+
+		if(primerasTreceCartas == null) return;
+
+		Iterator<Carta> iterador = primerasTreceCartas.iterator();
 
 		boolean esValida = validarPila(iterador);
 
@@ -61,7 +68,7 @@ public class PilaDeTableauSpider extends PilaDeCartas {
 
 		while(iterador.hasNext() && !error){
 			Carta c = iterador.next();
-			if(!aux.esMismoPalo(c) || !aux.esAntecesor(c) || aux.estaOculta())
+			if(!aux.esMismoPalo(c) || !c.esAntecesor(aux) || aux.estaOculta())
 				error = true;
 			aux = c;
 		}

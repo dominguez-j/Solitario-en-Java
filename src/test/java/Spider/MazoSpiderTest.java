@@ -1,8 +1,6 @@
 package Spider;
 
-import Klondike.MazoKlondike;
 import Solitario.Carta;
-import Solitario.Mazo;
 import Solitario.PilaDeCartas;
 import org.junit.Test;
 
@@ -21,13 +19,12 @@ public class MazoSpiderTest {
 		boolean noError = true;
 		int j = 0;
 		int valorEsperado = 1;
-
 		//act
 		m.inicializar(MazoSpider.UN_PALO);
 		cartas = new ArrayList<>(m.getMazo());
 
 		for(int h = 0; h < MazoSpider.UN_PALO; h++){
-			for(int k = 0; k < Spider.CANT_PILAS_FOUNDATION / MazoSpider.UN_PALO; k++){
+			for(int k = 0; k < MazoSpider.CANT_PILAS_FOUNDATION / MazoSpider.UN_PALO; k++){
 				for(int i = j; i < j+13 && j < 104 && noError; i++){
 					if (cartas.get(i).getPalo() != Carta.Palo.values()[h] || cartas.get(i).getValor() != valorEsperado){
 						noError = false;
@@ -57,7 +54,7 @@ public class MazoSpiderTest {
 		cartas = new ArrayList<>(m.getMazo());
 
 		for(int h = 0; h < MazoSpider.DOS_PALO; h++){
-			for(int k = 0; k < Spider.CANT_PILAS_FOUNDATION / MazoSpider.DOS_PALO; k++){
+			for(int k = 0; k < MazoSpider.CANT_PILAS_FOUNDATION / MazoSpider.DOS_PALO; k++){
 				for(int i = j; i < j+13 && j < 104 && noError; i++){
 					if (cartas.get(i).getPalo() != Carta.Palo.values()[h] || cartas.get(i).getValor() != valorEsperado){
 						noError = false;
@@ -87,7 +84,7 @@ public class MazoSpiderTest {
 		cartas = new ArrayList<>(m.getMazo());
 
 		for(int h = 0; h < MazoSpider.CUATRO_PALO; h++){
-			for(int k = 0; k < Spider.CANT_PILAS_FOUNDATION / MazoSpider.CUATRO_PALO; k++){
+			for(int k = 0; k < MazoSpider.CANT_PILAS_FOUNDATION / MazoSpider.CUATRO_PALO; k++){
 				for(int i = j; i < j+13 && j < 104 && noError; i++){
 					if (cartas.get(i).getPalo() != Carta.Palo.values()[h] || cartas.get(i).getValor() != valorEsperado){
 						noError = false;
