@@ -1,9 +1,11 @@
 package Spider;
 
 import Solitario.*;
+
+import java.io.Serializable;
 import java.util.*;
 
-public class Spider extends Solitario {
+public class Spider extends Solitario implements Serializable {
 
 	public Spider(){this.mazo = new MazoSpider();}
 

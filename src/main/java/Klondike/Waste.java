@@ -1,10 +1,12 @@
 package Klondike;
 
 import Solitario.*;
+
+import java.io.Serializable;
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class Waste extends PilaDeCartas {
+public class Waste extends PilaDeCartas implements Serializable {
 
     public Waste(){super();}
 

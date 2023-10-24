@@ -1,9 +1,11 @@
 package Klondike;
 
 import Solitario.*;
+
+import java.io.Serializable;
 import java.util.*;
 
-public class Klondike extends Solitario {
+public class Klondike extends Solitario implements Serializable {
 
     private Waste waste;
 
