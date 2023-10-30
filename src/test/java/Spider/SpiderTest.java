@@ -39,7 +39,6 @@ public class SpiderTest {
 		PilaDeTableauSpider p1 = new PilaDeTableauSpider();
 		PilaDeTableauSpider p2 = new PilaDeTableauSpider();
 
-
 		//act
 		p1.pushCarta(new Carta(2,Carta.Palo.DIAMANTE));
 		p2.pushCarta(new Carta(7,Carta.Palo.DIAMANTE));

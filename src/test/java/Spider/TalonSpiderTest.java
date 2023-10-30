@@ -11,10 +11,8 @@ public class TalonSpiderTest {
 		s.empezarJuego(MazoSpider.UN_PALO);
 		TalonSpider t = new TalonSpider(s.getTalon());
 
-
 		//act
 		t.robarCarta(s.getTableau(), s.getFoundation());
-
 
 		//assert
 		assertEquals(t.tamanio(), 40);
@@ -28,10 +26,8 @@ public class TalonSpiderTest {
 		TalonSpider t = new TalonSpider(s.getTalon());
 		PilaDeTableauSpider p = new PilaDeTableauSpider(s.getTableau().getPilasDeTableau().getFirst());
 
-
 		//act
 		t.robarCarta(s.getTableau(), s.getFoundation());
-
 
 		//assert
 		assertEquals(p.tamanio(), 7);

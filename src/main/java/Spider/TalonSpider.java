@@ -11,8 +11,7 @@ public class TalonSpider extends PilaDeCartas {
 	 * Si el talon está vacío, no sucede nada.
 	 */
 	public void robarCarta(Tableau tableau, Foundation foundation){
-		if(this.estaVacia())
-			return;
+		if(this.estaVacia()) return;
 
 		for(PilaDeCartas p : tableau.getPilasDeTableau()){
 			p.pushCarta(this.popCarta());
