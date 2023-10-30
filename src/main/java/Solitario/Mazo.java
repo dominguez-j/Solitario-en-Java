@@ -2,14 +2,14 @@ package Solitario;
 
 import java.util.*;
 
-public abstract class Mazo{
+public abstract class Mazo {
 
     public static final int CARTAS_POR_PALO = 13;
     protected Deque<Carta> mazo;
 
     public Mazo(){this.mazo = new LinkedList<>();}
 
-    public abstract void inicializar();
+    public abstract void inicializar(int cant_palos);
 
     public void mezclar(long semilla){
         List<Carta> aux = new ArrayList<>(mazo);

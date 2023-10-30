@@ -17,7 +17,7 @@ public class MazoKlondikeTest {
         int valorEsperado = 1;
 
         //act
-        m.inicializar();
+        m.inicializar(0);
         cartas = new ArrayList<>(m.getMazo());
 
         for(Carta.Palo p : Carta.Palo.values()){
@@ -42,7 +42,7 @@ public class MazoKlondikeTest {
         Deque<Carta> aux;
 
         //act
-        m.inicializar();
+        m.inicializar(0);
         aux = new ArrayDeque<>(m.getMazo());
         m.mezclar(1);
 
@@ -58,7 +58,7 @@ public class MazoKlondikeTest {
         boolean noError = true;
 
         //act
-        m.inicializar();
+        m.inicializar(0);
         m.mezclar(1);
         pilas = new ArrayList<>(m.repartir());
 

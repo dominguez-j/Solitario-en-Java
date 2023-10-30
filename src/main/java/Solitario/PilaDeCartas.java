@@ -4,15 +4,15 @@ import java.util.*;
 
 public class PilaDeCartas {
 
-    private Deque<Carta> pila;
+    private final Deque<Carta> pila;
 
     /**
      * Determina si es posible apilar la copia en la pila de cartas.
      *
-     * @param copiarAExtraer La pila de cartas que intento apilar.
+     * @param copiaAExtraer La pila de cartas que intento apilar.
      * @return true si es posible apilar, false si no es posible.
      */
-    public boolean sePuedeApilar(PilaDeCartas copiarAExtraer){return false;}
+    public boolean sePuedeApilar(PilaDeCartas copiaAExtraer){return false;}
 
     /**
      * Devuelve un deque de cartas removidas del deque original en base a la cantidad pasada por parámetro.
@@ -44,7 +44,7 @@ public class PilaDeCartas {
 
         Deque<Carta> cartasCopiadas = new LinkedList<>();
         boolean error = false;
-        Iterator<Carta> iterador = this.pila.iterator();
+        Iterator<Carta> iterador = this.getPila().iterator();
         int i = 0;
 
         while(i < cantidad && iterador.hasNext() && !error){
@@ -64,7 +64,12 @@ public class PilaDeCartas {
      *
      * @param Cartas El deque de cartas que se desea agregar al deque del objeto actual.
      */
-    public void agregarCartas(Deque<Carta> Cartas){this.pila.addAll(Cartas);}
+    public void agregarCartas(Deque<Carta> Cartas){
+        int size = Cartas.size();
+
+        for(int i = 0; i < size; i++)
+            this.pushCarta(Cartas.pollLast());
+    }
 
     public PilaDeCartas(){this.pila = new LinkedList<>();}
 
