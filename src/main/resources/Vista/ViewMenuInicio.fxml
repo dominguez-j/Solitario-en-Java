@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="Interfaz.Controlador.ViewMenuInicio" prefWidth="800" prefHeight="600">
+    <top>
+        <MenuBar>
+            <menus>
+                <Menu text="Opciones">
+                    <items>
+                        <MenuItem text="Ir al Menú Principal" onAction="#goToMainMenu" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+            <Label text="Solitario" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: black;"   />
+            <ComboBox fx:id="gameSelection" promptText="Seleccione un juego" onAction="#handleGameSelection">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Klondike" />
+                        <String fx:value="Spider" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <ComboBox fx:id="suitsSelection" promptText="Seleccione la cantidad de palos" onAction="#handleSuitsSelection" visible="false">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="1" />
+                        <String fx:value="2" />
+                        <String fx:value="4" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <ComboBox fx:id="seedSelection" promptText="Seleccione una semilla" onAction="#handleSeedSelection">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Semilla personalizada" />
+                        <String fx:value="Semilla aleatoria" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <Button text="Empezar partida" onAction="#startGame" />
+        </VBox>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER">
+            <Button text="Desarrolladores" onAction="#showDevelopers" />
+        </HBox>
+    </bottom>
+</BorderPane>
