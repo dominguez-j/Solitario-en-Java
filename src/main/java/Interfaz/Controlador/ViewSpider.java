@@ -1,19 +1,19 @@
 package Interfaz.Controlador;
 
-import Spider.Spider;
+import Solitario.Solitario;
+import javafx.scene.Scene;
 
-public class ViewSpider {
-	private Spider s = null;
+import java.io.IOException;
 
-	public static void empezarPartida(int cant_palos, long seed){
-		Spider s = new Spider();
-		if(seed == -1)
-			s.empezarJuego(cant_palos);
-		else
-			s.empezarJuego(cant_palos, seed);
+
+public class ViewSpider extends GameView {
+
+	@Override
+	public void actualizarVista(Solitario s) throws IOException {
+
+		Scene scene = new Scene(GameLoader.crearLoader(s).load(), 800, 600);
+		stage.setScene(scene);
 	}
 
-	public void setSolitario(Spider s) {
-		this.s = s;
-	}
+
 }

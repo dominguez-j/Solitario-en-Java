@@ -1,19 +1,16 @@
 package Interfaz.Controlador;
 
-import Klondike.Klondike;
+import Solitario.Solitario;
+import javafx.scene.Scene;
 
-public class ViewKlondike {
-	private Klondike k = null;
+import java.io.IOException;
 
-	public static void empezarPartida(long seed){
-		Klondike k = new Klondike();
-		if(seed == -1)
-			k.empezarJuego(0);
-		else
-			k.empezarJuego(0, seed);
-	}
+public class ViewKlondike extends GameView {
 
-	public void setSolitario(Klondike k) {
-		this.k = k;
+	@Override
+	public void actualizarVista(Solitario s) throws IOException {
+
+		Scene scene = new Scene(GameLoader.crearLoader(s).load(), 800, 600);
+		stage.setScene(scene);
 	}
 }

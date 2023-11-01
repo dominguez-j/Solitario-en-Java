@@ -1,14 +1,10 @@
 import Gestor.GestorDePartida;
 import Interfaz.Controlador.*;
-import Klondike.Klondike;
-import Spider.Spider;
 import Solitario.Solitario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
 import java.io.*;
 
 public class Main extends Application {
@@ -24,36 +20,30 @@ public class Main extends Application {
 		g = new GestorDePartida();
 		File partida = new File("partida.data");
 
-		if(partida.exists()){
+		if(partida.exists())
 			s = g.cargarPartida(new FileInputStream(partida));
-		}
 	}
 
 	@Override
-	public void start(Stage stage) throws Exception {
-		stage.getIcons().add(new Image("/Logo/logo.png"));
+	public void start(Stage stage) throws IOException {
+		IconSetter.setIcon(stage);
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/ViewMenuInicio.fxml"));
 		Parent root = loader.load();
-		root.setStyle("-fx-background-color: #0f570f;");
 		Scene scene = new Scene(root, 800, 600);
 
 		root.prefWidth(scene.getWidth());
 		root.prefHeight(scene.getHeight());
+		stage.setTitle("Solitario FIUBA");
 
-		if (s instanceof Klondike) {
-			FXMLLoader klondikeLoader = new FXMLLoader(getClass().getResource("/Vista/ViewKlondike.fxml"));
+		if(s != null) {
+			GameView gameView = GameLoader.crearLoader(s).getController();
+			gameView.setStage(stage);
 
-			ViewKlondike klondikeController = klondikeLoader.getController();
-			klondikeController.setSolitario((Klondike) s);
-		}else if(s instanceof Spider){
-			FXMLLoader spiderLoader = new FXMLLoader(getClass().getResource("/Vista/ViewSpider.fxml"));
-
-			ViewSpider spiderController = spiderLoader.getController();
-			spiderController.setSolitario((Spider) s);
+			GameController gameController = new GameController(s, gameView);
+			gameController.continuarPartida();
 		}
 
-		stage.setTitle("Solitario FIUBA");
 		stage.setScene(scene);
 		stage.show();
 	}

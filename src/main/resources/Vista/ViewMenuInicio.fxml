@@ -5,18 +5,11 @@
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="Interfaz.Controlador.ViewMenuInicio" prefWidth="800" prefHeight="600">
-    <top>
-        <MenuBar>
-            <menus>
-                <Menu text="Opciones">
-                    <items>
-                        <MenuItem text="Ir al Menú Principal" onAction="#goToMainMenu" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
-    </top>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="Interfaz.Controlador.ViewMainMenu" prefWidth="800" prefHeight="600">
+    <style>
+        -fx-background-color: #0f570f;
+    </style>
+
     <center>
         <VBox alignment="CENTER" spacing="20">
             <Label text="Solitario" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: black;"   />
@@ -48,12 +41,12 @@
                 </items>
             </ComboBox>
 
-            <Button text="Empezar partida" onAction="#startGame" />
+            <Button fx:id="startButton" text="Empezar partida" onAction="#empezarJuego" disable="true"/>
         </VBox>
     </center>
     <bottom>
         <HBox alignment="CENTER">
-            <Button text="Desarrolladores" onAction="#showDevelopers" />
+            <Button text="Desarrolladores" onAction="#mostrarDesarrolladores" />
         </HBox>
     </bottom>
 </BorderPane>

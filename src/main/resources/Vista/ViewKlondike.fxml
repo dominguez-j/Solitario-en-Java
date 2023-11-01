@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Interfaz.Controlador.ViewKlondike"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Interfaz.Controlador.ViewKlondike" prefHeight="400.0" prefWidth="600.0">
+    <style>
+        -fx-background-color: #0f570f;
+    </style>
 
-</AnchorPane>
+    <top>
+        <MenuBar fx:id="menuBar">
+            <menus>
+                <Menu text="Opciones">
+                    <items>
+                        <MenuItem text="Ir al Menú Principal" onAction="#irAlMenu" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+</BorderPane>
