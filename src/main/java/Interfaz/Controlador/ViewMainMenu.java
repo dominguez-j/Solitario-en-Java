@@ -37,30 +37,26 @@ public class ViewMainMenu {
 		String selectedSeed = seedSelection.getValue();
 
 		if ("Semilla personalizada".equals(selectedSeed)) {
-			Optional<String> respuesta;
-			do {
-				TextInputDialog dialog = new TextInputDialog();
-				dialog.setTitle("Semilla personalizada");
-				dialog.setHeaderText("Ingrese una semilla personalizada:");
+			TextInputDialog dialog = new TextInputDialog();
+			dialog.setTitle("Semilla personalizada");
+			dialog.setHeaderText("Ingrese una semilla personalizada:");
 
-				IconSetter.setIcon((Stage) dialog.getDialogPane().getScene().getWindow());
-				respuesta = dialog.showAndWait();
+			IconSetter.setIcon((Stage) dialog.getDialogPane().getScene().getWindow());
+			Optional<String> respuesta = dialog.showAndWait();
 
-				if (respuesta.isPresent()) {
-					try {
-						seed = Long.parseLong(respuesta.get());
-					} catch (NumberFormatException e) {
-						Alert alert = new Alert(Alert.AlertType.ERROR);
-						alert.setTitle("Error");
-						alert.setHeaderText("Número inválido");
-						alert.setContentText("Por favor, ingrese un número válido como semilla.");
+			respuesta.ifPresent(semilla -> {
+				try {
+					seed = Long.parseLong(semilla);
+				} catch (NumberFormatException e) {
+					Alert alert = new Alert(Alert.AlertType.ERROR);
+					alert.setTitle("Error");
+					alert.setHeaderText("Número inválido");
+					alert.setContentText("Por favor, ingrese un número válido como semilla.");
 
-						IconSetter.setIcon((Stage) alert.getDialogPane().getScene().getWindow());
-						alert.showAndWait();
-						respuesta = Optional.empty();
-					}
+					IconSetter.setIcon((Stage)alert.getDialogPane().getScene().getWindow());
+					alert.showAndWait();
 				}
-			} while (!respuesta.isPresent());
+			});
 		}
 		updateStartButtonState();
 	}
@@ -82,7 +78,7 @@ public class ViewMainMenu {
 			gameView.setStage((Stage)gameSelection.getScene().getWindow());
 
 			GameController gameController = new GameController(SolitarioFactory.crearSolitario(selectedGame), gameView);
-			gameController.empezarNuevaPartida(suitsSelection.getValue() ,seed != 0 ? String.valueOf(seed) :seedSelection.getValue());
+			gameController.empezarNuevaPartida(suitsSelection.getValue() ,seed != 0 ? String.valueOf(seed) : seedSelection.getValue());
 		}
 	}
 

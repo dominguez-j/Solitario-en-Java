@@ -2,8 +2,9 @@ package Solitario;
 
 public class Carta {
 
-    public enum Palo {DIAMANTE, TREBOL, CORAZON, PICA};
-    public static final int AS = 1;
+    public enum Palo {DIAMANTE, TREBOL, CORAZON, PICA}
+
+	public static final int AS = 1;
     public static final int K = 13;
     private final int valor;
     private final Palo palo;
