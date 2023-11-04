@@ -1,5 +1,7 @@
 package Solitario;
 
+import javafx.scene.image.Image;
+
 public class Carta {
 
     public enum Palo {DIAMANTE, TREBOL, CORAZON, PICA}
@@ -9,11 +11,15 @@ public class Carta {
     private final int valor;
     private final Palo palo;
     private boolean oculta;
+    private final Image frente;
+    private final Image dorso;
 
     public Carta(int valor, Palo palo){
         this.valor = valor;
         this.palo = palo;
         this.oculta = true;
+        this.frente = new Image(getFrente(palo.name(), valor));
+        this.dorso = new Image(getDorso());
     }
 
     public int getValor(){return this.valor;}
@@ -36,4 +42,16 @@ public class Carta {
     }
 
     public boolean esMismoPalo(Carta carta){return this.getPalo() == carta.getPalo();}
+
+    public Image getobtenerImagenSegunEstado(){
+        return estaOculta() ? this.dorso : this.frente;
+    }
+
+    private String getFrente(String tipo, int valor){
+        return Carta.class.getResource("/Cartas/" + tipo + " " + valor + ".png").getFile();
+    }
+
+    private String getDorso(){
+        return Carta.class.getResource("/Cartas/DORSO.png").getFile();
+    }
 }
