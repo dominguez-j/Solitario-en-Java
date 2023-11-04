@@ -24,7 +24,11 @@ public class GameController {
 		else
 			solitario.empezarJuego(Integer.parseInt(suits), Long.parseLong(seed));
 
-		actualizarPantalla();
+		inicializarPantalla();
+	}
+
+	private void inicializarPantalla() throws IOException {
+		gameView.inicializarJuego(solitario);
 	}
 
 	public void hacerMovimiento(PilaDeCartas origen, PilaDeCartas destino, int cantidad) throws IOException {

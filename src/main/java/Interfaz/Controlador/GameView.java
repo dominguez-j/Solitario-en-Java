@@ -26,4 +26,5 @@ public abstract class GameView {
 	void mostrarVentanaDeVictoria(){
 
 	}
+	public abstract void inicializarJuego(Solitario s);
 }
