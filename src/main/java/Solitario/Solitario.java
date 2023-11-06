@@ -1,5 +1,8 @@
 package Solitario;
-public abstract class Solitario {
+
+import java.io.*;
+
+public abstract class Solitario{
 
     protected Mazo mazo;
     protected PilaDeCartas talon;
@@ -54,4 +57,16 @@ public abstract class Solitario {
     public Foundation getFoundation(){return this.foundation;}
 
     public Tableau getTableau(){return this.tableau;}
+
+    public void guardarPartida(OutputStream os) throws IOException {
+        try (ObjectOutputStream solitario = new ObjectOutputStream(os)) {
+            solitario.writeObject(this);
+        }
+    }
+
+    public Solitario cargarPartida(InputStream is) throws IOException, ClassNotFoundException {
+        try (ObjectInputStream solitario = new ObjectInputStream(is)) {
+            return (Solitario) solitario.readObject();
+        }
+    }
 }

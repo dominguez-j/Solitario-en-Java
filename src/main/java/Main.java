@@ -1,4 +1,3 @@
-import Gestor.GestorDePartida;
 import Interfaz.Controlador.*;
 import Solitario.Solitario;
 import javafx.application.Application;
@@ -9,7 +8,6 @@ import java.io.*;
 
 public class Main extends Application {
 
-	private GestorDePartida g;
 	private Solitario s = null;
 	public static void main(String[] args) {
 		launch(args);
@@ -17,11 +15,10 @@ public class Main extends Application {
 
 	@Override
 	public void init() throws IOException, ClassNotFoundException {
-		g = new GestorDePartida();
 		File partida = new File("partida.data");
 
 		if(partida.exists())
-			s = g.cargarPartida(new FileInputStream(partida));
+			s = s.cargarPartida(new FileInputStream(partida));
 	}
 
 	@Override
@@ -51,6 +48,6 @@ public class Main extends Application {
 	@Override
 	public void stop() throws IOException {
 		if(s != null)
-			g.guardarPartida(new FileOutputStream("partida.data"), s);
+			s.guardarPartida(new FileOutputStream("partida.data"));
 	}
 }

@@ -1,7 +1,6 @@
-package Gestor;
+package Solitario;
 
 import Klondike.Klondike;
-import Solitario.Solitario;
 import Spider.Spider;
 import org.junit.Test;
 import java.io.*;
@@ -12,16 +11,15 @@ public class GestorDePartidaTest {
 	@Test
 	public void guardarYCargarPartidaKlondike() throws IOException, ClassNotFoundException{
 		//arrange
-		GestorDePartida g = new GestorDePartida();
 		Klondike k = new Klondike();
 		Solitario solitarioCargado;
 
 		//act
 		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-		g.guardarPartida(byteArrayOutputStream, k);
+		k.guardarPartida(byteArrayOutputStream);
 
 		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
-		solitarioCargado = g.cargarPartida(byteArrayInputStream);
+		solitarioCargado = k.cargarPartida(byteArrayInputStream);
 
 		//assert
 		assertNotNull(solitarioCargado);
@@ -30,16 +28,15 @@ public class GestorDePartidaTest {
 	@Test
 	public void guardarYCargarPartidaSpider() throws IOException, ClassNotFoundException{
 		//arrange
-		GestorDePartida g = new GestorDePartida();
 		Spider s = new Spider();
 		Solitario solitarioCargado;
 
 		//act
 		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-		g.guardarPartida(byteArrayOutputStream, s);
+		s.guardarPartida(byteArrayOutputStream);
 
 		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
-		solitarioCargado = g.cargarPartida(byteArrayInputStream);
+		solitarioCargado = s.cargarPartida(byteArrayInputStream);
 
 		//assert
 		assertNotNull(solitarioCargado);
