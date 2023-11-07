@@ -1,5 +1,6 @@
-package Interfaz.Controlador;
+package Vista;
 
+import Vista.Navigation;
 import Solitario.Solitario;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuBar;
@@ -21,9 +22,9 @@ public abstract class GameView {
 	public void setStage(Stage stage) {
 		this.stage = stage;
 	}
-	abstract void actualizarVista(Solitario s) throws IOException;
+	public abstract void actualizarVista(Solitario s) throws IOException;
 
-	void mostrarVentanaDeVictoria(){
+	public void mostrarVentanaDeVictoria(){
 
 	}
 	public abstract void inicializarJuego(Solitario s);

@@ -1,4 +1,8 @@
-package Interfaz.Controlador;
+package Controlador;
+
+import Vista.GameView;
+import Vista.ViewKlondike;
+import Vista.ViewSpider;
 
 public class GameViewFactory {
 	public static GameView crearGameView(String tipoSolitario) {

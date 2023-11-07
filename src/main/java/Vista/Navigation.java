@@ -1,4 +1,4 @@
-package Interfaz.Controlador;
+package Vista;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

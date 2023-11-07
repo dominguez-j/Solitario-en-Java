@@ -1,4 +1,4 @@
-package Interfaz.Controlador;
+package Controlador;
 
 import Klondike.Klondike;
 import Solitario.Solitario;

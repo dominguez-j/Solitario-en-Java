@@ -1,5 +1,8 @@
-import Interfaz.Controlador.*;
+import Controlador.GameController;
+import Controlador.GameLoader;
+import Vista.GameView;
 import Solitario.Solitario;
+import Vista.IconSetter;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;

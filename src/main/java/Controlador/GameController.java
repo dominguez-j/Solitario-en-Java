@@ -1,6 +1,7 @@
-package Interfaz.Controlador;
+package Controlador;
 
 import Solitario.*;
+import Vista.GameView;
 
 import java.io.IOException;
 
@@ -17,7 +18,7 @@ public class GameController {
 		actualizarPantalla();
 	}
 
-	public void empezarNuevaPartida(String suits, String seed) throws IOException {
+	public void empezarNuevaPartida(String suits, String seed) {
 
 		if (seed.equals("Semilla aleatoria"))
 			solitario.empezarJuego(Integer.parseInt(suits));
@@ -27,7 +28,7 @@ public class GameController {
 		inicializarPantalla();
 	}
 
-	private void inicializarPantalla() throws IOException {
+	private void inicializarPantalla() {
 		gameView.inicializarJuego(solitario);
 	}
 
