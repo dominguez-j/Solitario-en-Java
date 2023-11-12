@@ -25,7 +25,7 @@ public class ViewMainMenu {
 	private void handleGameSelection() {
 		String selectedGame = gameSelection.getValue();
 
-		seedSelection.setDisable(!(selectedGame != null));
+		seedSelection.setDisable(selectedGame == null);
 
 		if ("Klondike".equals(selectedGame))
 			suitsSelection.setValue("4");
@@ -87,7 +87,7 @@ public class ViewMainMenu {
 	}
 
 	@FXML
-	private void empezarJuego() {
+	private void empezarJuego() throws IOException {
 		String selectedGame = gameSelection.getValue();
 		GameView gameView = GameViewFactory.crearGameView(selectedGame);
 

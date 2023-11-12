@@ -41,7 +41,7 @@ public class Carta {
 
     public boolean esMismoPalo(Carta carta){return this.getPalo() == carta.getPalo();}
 
-    public String getobtenerImagenSegunEstado(){
+    public String getImagenSegunEstado(){
         return estaOculta() ? this.dorso : this.frente;
     }
 

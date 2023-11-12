@@ -14,11 +14,11 @@ public class GameController {
 		this.gameView = gameView;
 	}
 
-	public void continuarPartida() throws IOException {
+	public void continuarPartida() {
 		actualizarPantalla();
 	}
 
-	public void empezarNuevaPartida(String suits, String seed) {
+	public void empezarNuevaPartida(String suits, String seed) throws IOException {
 
 		if (seed.equals("Semilla aleatoria"))
 			solitario.empezarJuego(Integer.parseInt(suits));
@@ -28,16 +28,15 @@ public class GameController {
 		inicializarPantalla();
 	}
 
-	private void inicializarPantalla() {
+	private void inicializarPantalla() throws IOException {
 		gameView.inicializarJuego(solitario);
 	}
 
 	public void hacerMovimiento(PilaDeCartas origen, PilaDeCartas destino, int cantidad) throws IOException {
 		if (!solitario.verificarVictoria()) {
-			if(!solitario.esMovimientoValido(origen, destino, cantidad)){
-				//Hacer algo cuando no es válido
+			if(!solitario.esMovimientoValido(origen, destino, cantidad))
 				return;
-			}
+
 			solitario.moverCartas(origen, destino, cantidad);
 			actualizarPantalla();
 
@@ -46,11 +45,11 @@ public class GameController {
 		}
 	}
 
-	private void actualizarPantalla() throws IOException {
+	private void actualizarPantalla() {
 		gameView.actualizarVista(solitario);
 	}
 
-	private void mostrarMensajeDeVictoria() {
+	private void mostrarMensajeDeVictoria() throws IOException {
 		gameView.mostrarVentanaDeVictoria();
 	}
 }

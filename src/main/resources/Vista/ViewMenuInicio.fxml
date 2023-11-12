@@ -5,9 +5,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="600" prefWidth="800" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="Vista.ViewMainMenu">
+<BorderPane prefWidth="800" prefHeight="600" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="Vista.ViewMainMenu">
     <style>
-        -fx-background-color: #0f570f;
+        -fx-background-color: #006400;
     </style>
 
     <center>

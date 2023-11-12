@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.canvas.Canvas?>
 
-<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Vista.ViewSpider" prefHeight="400.0" prefWidth="600.0">
+<BorderPane fx:id="root" prefWidth="1280" prefHeight="1024" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.ViewKlondike">
     <style>
-        -fx-background-color: #0f570f;
+        -fx-background-color: #006400;
     </style>
 
     <top>
@@ -15,11 +14,15 @@
             <menus>
                 <Menu text="Opciones">
                     <items>
-                        <MenuItem text="Ir al Menú Principal" onAction="#irAlMenu" />
+                        <MenuItem onAction="#irAlMenu" text="Ir al Menú Principal" />
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
     </top>
+
+    <center>
+        <Canvas fx:id="gameCanvas"/>
+    </center>
 
 </BorderPane>

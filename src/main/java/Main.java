@@ -32,8 +32,6 @@ public class Main extends Application {
 		Parent root = loader.load();
 		Scene scene = new Scene(root, 800, 600);
 
-		root.prefWidth(scene.getWidth());
-		root.prefHeight(scene.getHeight());
 		stage.setTitle("Solitario FIUBA");
 
 		if(s != null) {
@@ -44,6 +42,7 @@ public class Main extends Application {
 			gameController.continuarPartida();
 		}
 
+		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.show();
 	}
