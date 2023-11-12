@@ -56,14 +56,11 @@ public abstract class GameView {
 
 	public void inicializarJuego(Solitario s) throws IOException{
 		BorderPane root = GameLoader.crearLoader(s).load();
-		scene = new Scene(root, 800, 600);
-		root.prefHeight(scene.getHeight());
-		root.prefWidth(scene.getWidth());
-
-		gameCanvas = new Canvas(root.getWidth(), root.getHeight());
+		scene = ResolutionSetter.setResolution(root, s);
+		gameCanvas = new Canvas(scene.getWidth(), scene.getHeight());
 		gc = gameCanvas.getGraphicsContext2D();
 		gc.setFill(Color.DARKGREEN);
-		gc.fillRect(0, 0, root.getWidth(), root.getHeight());
+		gc.fillRect(0, 0, scene.getWidth(), scene.getHeight());
 		root.setCenter(gameCanvas);
 
 		cargarTablero(s);
