@@ -12,6 +12,7 @@ public class GameController {
 	public GameController(Solitario solitario, GameView gameView) {
 		this.solitario = solitario;
 		this.gameView = gameView;
+		this.gameView.setController(this);
 	}
 
 	public void continuarPartida() {
@@ -39,10 +40,10 @@ public class GameController {
 
 			solitario.moverCartas(origen, destino, cantidad);
 			actualizarPantalla();
-
-			if (solitario.verificarVictoria())
-				mostrarMensajeDeVictoria();
 		}
+
+		if (solitario.verificarVictoria())
+			mostrarMensajeDeVictoria();
 	}
 
 	private void actualizarPantalla() {

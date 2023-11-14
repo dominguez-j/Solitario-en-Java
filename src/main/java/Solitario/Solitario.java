@@ -1,8 +1,10 @@
 package Solitario;
 
+import Vista.ResolucionConfigurable;
+
 import java.io.*;
 
-public abstract class Solitario{
+public abstract class Solitario implements ResolucionConfigurable {
 
     protected Mazo mazo;
     protected PilaDeCartas talon;

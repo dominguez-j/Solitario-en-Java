@@ -1,14 +1,13 @@
 package Vista;
 
-
 import Klondike.*;
 import Solitario.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.util.Iterator;
 
-public class ViewKlondike extends GameView {
+public class ViewKlondike extends GameView{
 
 	@Override
 	public void irAlMenu() throws IOException {
@@ -18,59 +17,46 @@ public class ViewKlondike extends GameView {
 	@Override
 	protected void cargarTablero(Solitario s) {
 		Klondike k = (Klondike)s;
+		ImageView cartaImageView;
+		Image cartaImage;
 
 		double y = 8;
 		double x = 14;
 
-		gc.drawImage(new Image("/Cartas/VACIO.png"), x, y);
-		Iterator<Carta> iterador = k.getTalon().getPila().descendingIterator();
-
-		while (iterador.hasNext()){
-			gc.drawImage(new Image(iterador.next().getImagenSegunEstado()), x, y);
-			y += 0.8;
-			x += 0.3;
-		}
+		cargarPilaConEventos(k.getTalon(), x, y, 0.3, 0.8);
 
 		y = 8;
 		x = 150;
-		gc.drawImage(new Image("/Cartas/VACIO.png"), x, y);
-
-		iterador = k.getWaste().getPila().descendingIterator();
-
-		while (iterador.hasNext())
-			gc.drawImage(new Image(iterador.next().getImagenSegunEstado()), x, y);
-
+		cargarPilaConEventos(k.getWaste(), x, y, 0, 0);
 
 		x = 344;
 		for(Carta.Palo p : Carta.Palo.values()){
-			gc.drawImage(new Image("/Cartas/"+p.name()+" VACIO.png"), x, y);
+			cartaImage = new Image("/Cartas/"+p.name()+" VACIO.png");
+			gc.drawImage(cartaImage, x, y);
+			cartaImageView = new ImageView(cartaImage);
+			asociarEventoDeClicACarta(cartaImageView, null, k.getFoundation().getPilasFoundation().iterator().next());
 			x += 110;
 		}
 
 		x = 344;
 		for(PilaDeCartas p : k.getFoundation().getPilasFoundation()){
-			iterador = p.getPila().descendingIterator();
-
-			while (iterador.hasNext())
-				gc.drawImage(new Image(iterador.next().getImagenSegunEstado()), x, y);
-
+			cargarPilaConEventos(p, x, y, 0, 0);
 			x += 110;
 		}
 
-
 		x = 14;
 		for(PilaDeCartas p : k.getTableau().getPilasDeTableau()){
-			iterador = p.getPila().descendingIterator();
-
 			y = 210;
-
-			while (iterador.hasNext()){
-				gc.drawImage(new Image(iterador.next().getImagenSegunEstado()), x, y);
-				y += 17;
-			}
+			cargarPilaConEventos(p, x, y, 0, 17);
 			x += 110;
 		}
 
 		stage.setScene(scene);
 	}
+
+	@Override
+	protected void asociarEventoDeClicACarta(ImageView imageView, Carta carta, PilaDeCartas pila) {
+
+	}
+
 }

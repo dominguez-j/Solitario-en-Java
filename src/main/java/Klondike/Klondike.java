@@ -1,11 +1,12 @@
 package Klondike;
 
 import Solitario.*;
+import Vista.ResolucionConfigurable;
 
 import java.io.Serializable;
 import java.util.*;
 
-public class Klondike extends Solitario implements Serializable {
+public class Klondike extends Solitario implements Serializable, ResolucionConfigurable {
 
     private Waste waste;
 
@@ -33,4 +34,14 @@ public class Klondike extends Solitario implements Serializable {
     }
 
     public Waste getWaste(){return this.waste;}
+
+    @Override
+    public int obtenerAncho(){
+        return 800;
+    }
+
+    @Override
+    public int obtenerAlto(){
+        return 800;
+    }
 }

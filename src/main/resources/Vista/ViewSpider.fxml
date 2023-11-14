@@ -21,8 +21,6 @@
         </MenuBar>
     </top>
 
-    <center>
-        <Canvas fx:id="gameCanvas"/>
-    </center>
+    <Canvas fx:id="gameCanvas"/>
 
 </BorderPane>

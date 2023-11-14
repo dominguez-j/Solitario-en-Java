@@ -1,11 +1,12 @@
 package Spider;
 
 import Solitario.*;
+import Vista.ResolucionConfigurable;
 
 import java.io.Serializable;
 import java.util.*;
 
-public class Spider extends Solitario implements Serializable {
+public class Spider extends Solitario implements Serializable, ResolucionConfigurable {
 
 	public Spider(){this.mazo = new MazoSpider();}
 
@@ -43,5 +44,15 @@ public class Spider extends Solitario implements Serializable {
 		destino.agregarCartas(origen.extraerCartas(cantidad));
 		PilaDeTableauSpider t = new PilaDeTableauSpider(destino);
 		t.moverCartasAlFoundationSiEsPosible(this.foundation);
+	}
+
+	@Override
+	public int obtenerAncho(){
+		return 1130;
+	}
+
+	@Override
+	public int obtenerAlto(){
+		return 800;
 	}
 }
