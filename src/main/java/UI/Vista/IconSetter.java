@@ -1,4 +1,4 @@
-package Vista;
+package UI.Vista;
 
 import javafx.scene.image.Image;
 import javafx.stage.Stage;

@@ -1,7 +1,7 @@
-package Controlador;
+package UI.Controlador;
 
 import Solitario.*;
-import Vista.GameView;
+import UI.Vista.GameView;
 
 import java.io.IOException;
 

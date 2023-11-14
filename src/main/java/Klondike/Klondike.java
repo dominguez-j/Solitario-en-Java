@@ -1,7 +1,7 @@
 package Klondike;
 
 import Solitario.*;
-import Vista.ResolucionConfigurable;
+import UI.Vista.ResolucionConfigurable;
 
 import java.io.Serializable;
 import java.util.*;

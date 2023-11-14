@@ -1,8 +1,10 @@
-package Vista;
+package UI.Vista;
 
-import Controlador.GameController;
-import Controlador.GameViewFactory;
-import Controlador.SolitarioFactory;
+import UI.Controlador.GameController;
+import UI.Controlador.GameViewFactory;
+import UI.Controlador.SolitarioFactory;
+import UI.Vista.GameView;
+import UI.Vista.IconSetter;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;

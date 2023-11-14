@@ -1,4 +1,4 @@
-package Vista;
+package UI.Vista;
 
 import Solitario.Solitario;
 import javafx.scene.Parent;

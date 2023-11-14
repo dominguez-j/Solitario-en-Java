@@ -1,8 +1,8 @@
-import Controlador.GameController;
-import Controlador.GameLoader;
-import Vista.GameView;
+import UI.Controlador.GameController;
+import UI.Controlador.GameLoader;
+import UI.Vista.GameView;
 import Solitario.Solitario;
-import Vista.IconSetter;
+import UI.Vista.IconSetter;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
@@ -28,7 +28,7 @@ public class Main extends Application {
 	public void start(Stage stage) throws IOException {
 		IconSetter.setIcon(stage);
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/ViewMenuInicio.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/ViewMenuInicio.fxml"));
 		Parent root = loader.load();
 		Scene scene = new Scene(root, 800, 600);
 

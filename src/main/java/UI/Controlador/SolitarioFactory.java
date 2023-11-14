@@ -1,4 +1,4 @@
-package Controlador;
+package UI.Controlador;
 
 import Klondike.Klondike;
 import Solitario.Solitario;

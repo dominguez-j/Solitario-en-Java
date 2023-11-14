@@ -2,9 +2,8 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.canvas.Canvas?>
 
-<BorderPane prefWidth="800" prefHeight="600" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.ViewKlondike">
+<BorderPane fx:id="root" prefWidth="1280" prefHeight="1024" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Vista.ViewKlondike">
     <style>
         -fx-background-color: #006400;
     </style>
@@ -20,7 +19,5 @@
             </menus>
         </MenuBar>
     </top>
-
-    <Canvas fx:id="gameCanvas"/>
 
 </BorderPane>

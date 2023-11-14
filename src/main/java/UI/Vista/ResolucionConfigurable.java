@@ -1,4 +1,4 @@
-package Vista;
+package UI.Vista;
 
 public interface ResolucionConfigurable {
 	int obtenerAncho();

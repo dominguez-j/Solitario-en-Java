@@ -1,4 +1,4 @@
-package Vista;
+package UI.Vista;
 
 import Klondike.*;
 import Solitario.*;
@@ -7,7 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class ViewKlondike extends GameView{
+public class ViewKlondike extends GameView {
 
 	@Override
 	public void irAlMenu() throws IOException {
@@ -17,37 +17,28 @@ public class ViewKlondike extends GameView{
 	@Override
 	protected void cargarTablero(Solitario s) {
 		Klondike k = (Klondike)s;
-		ImageView cartaImageView;
-		Image cartaImage;
 
-		double y = 8;
+		double y = 35;
 		double x = 14;
 
-		cargarPilaConEventos(k.getTalon(), x, y, 0.3, 0.8);
+		cargarPilaConEventos(k.getTalon(), x, y, 0.3, 0.8, null);
 
-		y = 8;
+		y = 35;
 		x = 150;
-		cargarPilaConEventos(k.getWaste(), x, y, 0, 0);
+		cargarPilaConEventos(k.getWaste(), x, y, 0, 0, null);
 
 		x = 344;
-		for(Carta.Palo p : Carta.Palo.values()){
-			cartaImage = new Image("/Cartas/"+p.name()+" VACIO.png");
-			gc.drawImage(cartaImage, x, y);
-			cartaImageView = new ImageView(cartaImage);
-			asociarEventoDeClicACarta(cartaImageView, null, k.getFoundation().getPilasFoundation().iterator().next());
-			x += 110;
-		}
-
-		x = 344;
+		int index_palo = 0;
 		for(PilaDeCartas p : k.getFoundation().getPilasFoundation()){
-			cargarPilaConEventos(p, x, y, 0, 0);
+			cargarPilaConEventos(p, x, y, 0, 0, Carta.Palo.values()[index_palo].name());
 			x += 110;
+			index_palo++;
 		}
 
 		x = 14;
 		for(PilaDeCartas p : k.getTableau().getPilasDeTableau()){
 			y = 210;
-			cargarPilaConEventos(p, x, y, 0, 17);
+			cargarPilaConEventos(p, x, y, 0, 17, null);
 			x += 110;
 		}
 
@@ -56,7 +47,12 @@ public class ViewKlondike extends GameView{
 
 	@Override
 	protected void asociarEventoDeClicACarta(ImageView imageView, Carta carta, PilaDeCartas pila) {
+		imageView.setOnMouseClicked(event -> {
+			if(event.getClickCount() == 1)
+				if(carta != null)
+					System.out.println(carta.getPalo() +" "+ carta.getValor() );
+				
 
+		});
 	}
-
 }

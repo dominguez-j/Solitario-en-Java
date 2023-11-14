@@ -1,7 +1,7 @@
-package Vista;
+package UI.Vista;
 
-import Controlador.GameController;
-import Controlador.GameLoader;
+import UI.Controlador.GameController;
+import UI.Controlador.GameLoader;
 import Solitario.*;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -21,13 +21,11 @@ public abstract class GameView {
 	protected Stage stage;
 	protected Scene scene;
 	protected GameController controller;
+	@FXML
+	private BorderPane root;
 
 	@FXML
 	protected MenuBar menuBar;
-	@FXML
-	protected Canvas gameCanvas;
-	@FXML
-	protected GraphicsContext gc;
 
 	public void irAlMenu() throws IOException{
 		Navigation.irAlMenu(this.stage);
@@ -62,13 +60,8 @@ public abstract class GameView {
 	}
 
 	public void inicializarJuego(Solitario s) throws IOException{
-		BorderPane root = GameLoader.crearLoader(s).load();
+		root = GameLoader.crearLoader(s).load();
 		scene = ResolutionSetter.setResolution(root, s);
-		gameCanvas = new Canvas(scene.getWidth(), scene.getHeight());
-		gc = gameCanvas.getGraphicsContext2D();
-		gc.setFill(Color.DARKGREEN);
-		gc.fillRect(0, 0, scene.getWidth(), scene.getHeight());
-		root.setCenter(gameCanvas);
 
 		cargarTablero(s);
 	}
@@ -82,19 +75,17 @@ public abstract class GameView {
 		return imageView;
 	}
 
-	protected void cargarPilaConEventos(PilaDeCartas pila, double x, double y, double incrementoX, double incrementoY) {
-		Image cartaImage = new Image("/Cartas/VACIO.png");
-		gc.drawImage(cartaImage, x, y);
-		ImageView cartaImageView = crearImageView(cartaImage, x,y);
+	protected void cargarPilaConEventos(PilaDeCartas pila, double x, double y, double incrementoX, double incrementoY, String palo) {
+		ImageView cartaImageView = crearImageView(new Image(palo == null ? "/Cartas/VACIO.png": "/Cartas/"+palo+" VACIO.png"), x,y);
 		asociarEventoDeClicACarta(cartaImageView, null, pila);
+		root.getChildren().add(cartaImageView);
 
 		Iterator<Carta> iterador = pila.getPila().descendingIterator();
 		while (iterador.hasNext()){
 			Carta carta = iterador.next();
-			cartaImage = new Image(carta.getImagenSegunEstado());
-			gc.drawImage(cartaImage, x, y);
-			cartaImageView = crearImageView(cartaImage, x,y);
+			cartaImageView = crearImageView(new Image(carta.getImagenSegunEstado()), x,y);
 			asociarEventoDeClicACarta(cartaImageView, carta, pila);
+			root.getChildren().add(cartaImageView);
 			y += incrementoY;
 			x += incrementoX;
 		}

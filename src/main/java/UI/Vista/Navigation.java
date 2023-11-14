@@ -1,4 +1,4 @@
-package Vista;
+package UI.Vista;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Navigation {
 	public static void irAlMenu(Stage stage) throws IOException {
-		FXMLLoader loader = new FXMLLoader(Navigation.class.getResource("/Vista/ViewMenuInicio.fxml"));
+		FXMLLoader loader = new FXMLLoader(Navigation.class.getResource("/UI/ViewMenuInicio.fxml"));
 		Parent root = loader.load();
 
 		Scene scene = new Scene(root, 800, 600);

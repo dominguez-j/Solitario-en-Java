@@ -1,6 +1,6 @@
 package Solitario;
 
-import Vista.ResolucionConfigurable;
+import UI.Vista.ResolucionConfigurable;
 
 import java.io.*;
 
