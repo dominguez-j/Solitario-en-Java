@@ -36,7 +36,7 @@ public abstract class GameView {
 		cargarTablero();
 	}
 
-	public void mostrarVentanaDeVictoria() throws IOException {
+	public void mostrarVentanaDeVictoria() {
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.setTitle("¡Victoria!");
 		alert.setHeaderText(null);
@@ -46,10 +46,7 @@ public abstract class GameView {
 
 		alert.getButtonTypes().setAll(new ButtonType("Volver"));
 
-		if(alert.showAndWait().isPresent())
-			irAlMenu();
-		else
-			irAlMenu();
+		alert.showAndWait();
 	}
 
 	public void inicializarJuego(Solitario s) {
@@ -92,14 +89,14 @@ public abstract class GameView {
 
 	protected void cargarPilaConEventos(PilaDeCartas pila, double x, double y, double incrementoX, double incrementoY, String palo) {
 		ImageView cartaImageView = crearImageView(new Image(palo == null ? "/Cartas/VACIO.png": "/Cartas/"+palo+" VACIO.png"), x,y);
-		gc.asociarEventoDeClicACarta(new CardView(null, cartaImageView), pila);
+		gc.asociarEventoDeClicACarta(new CardView(null, cartaImageView, pila));
 		root.getChildren().add(cartaImageView);
 
 		Iterator<Carta> iterador = pila.getPila().descendingIterator();
 		while (iterador.hasNext()){
 			Carta carta = iterador.next();
 			cartaImageView = crearImageView(new Image(carta.getImagenSegunEstado()), x,y);
-			gc.asociarEventoDeClicACarta(new CardView(carta, cartaImageView), pila);
+			gc.asociarEventoDeClicACarta(new CardView(carta, cartaImageView, pila));
 			root.getChildren().add(cartaImageView);
 			y += incrementoY;
 			x += incrementoX;

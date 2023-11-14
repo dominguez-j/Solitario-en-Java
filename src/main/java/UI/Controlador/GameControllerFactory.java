@@ -11,7 +11,7 @@ public class GameControllerFactory {
 
 		switch (tipo) {
 			case Klondike:
-				return new KlondlikeController(s, gameView);
+				return new KlondikeController(s, gameView);
 			case Spider:
 				return new SpiderController(s, gameView);
 			default:

@@ -9,6 +9,7 @@ import java.io.IOException;
 public abstract class GameController {
 	protected Solitario s;
 	protected GameView gameView;
+	protected CardView cartaSeleccionada;
 
 	public void continuarPartida() {
 		actualizarPantalla();
@@ -30,14 +31,10 @@ public abstract class GameController {
 
 	public void hacerMovimiento(PilaDeCartas origen, PilaDeCartas destino, int cantidad) throws IOException {
 		if (!s.verificarVictoria()) {
-			if(!s.esMovimientoValido(origen, destino, cantidad))
-				return;
-
-			s.moverCartas(origen, destino, cantidad);
-			actualizarPantalla();
+			if(s.esMovimientoValido(origen, destino, cantidad))
+				s.moverCartas(origen, destino, cantidad);
 		}
-
-		if (s.verificarVictoria())
+		if(s.verificarVictoria())
 			mostrarMensajeDeVictoria();
 	}
 
@@ -45,9 +42,36 @@ public abstract class GameController {
 		gameView.actualizarVista();
 	}
 
-	private void mostrarMensajeDeVictoria() throws IOException {
+	private void mostrarMensajeDeVictoria() {
 		gameView.mostrarVentanaDeVictoria();
 	}
 
-	public abstract void asociarEventoDeClicACarta(CardView cardView, PilaDeCartas pila);
+	public void asociarEventoDeClicACarta(CardView cardView){
+		cardView.getCartaImageView().setOnMouseClicked(event -> {
+			if (!cardView.isSeleccionada() && cartaSeleccionada == null) {
+				if (cardView.getCarta() != null && !cardView.getCarta().estaOculta()) {
+					cardView.setSeleccionada();
+					cartaSeleccionada = cardView;
+				}else if (checkTalon(cardView)) {
+					handlerTalon(cardView);
+				}
+			} else if(!cardView.isSeleccionada() && cartaSeleccionada != null){
+				try {
+					hacerMovimiento(cartaSeleccionada.getRefenciaPila(), cardView.getRefenciaPila(), cartaSeleccionada.getCantidadDeCartasAMover());
+					cartaSeleccionada = null;
+					gameView.actualizarVista();
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+				}
+			}
+			else {
+				cardView.setDeseleccionada();
+				cartaSeleccionada = null;
+			}
+		});
+	};
+
+	public abstract void handlerTalon(CardView cardView);
+
+	public abstract boolean checkTalon(CardView cardView);
 }

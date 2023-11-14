@@ -1,9 +1,6 @@
 package UI.Vista;
 
 import Solitario.Solitario.TipoSolitario;
-import UI.Vista.GameView;
-import UI.Vista.KlondikeView;
-import UI.Vista.SpiderView;
 
 public class GameViewFactory {
 	public static GameView crearGameView(String tipoSolitario) {

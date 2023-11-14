@@ -32,10 +32,10 @@ public class Spider extends Solitario implements Serializable, ResolucionConfigu
 	public void llenarJuego(){
 		Deque<PilaDeCartas> mazoDistribuido = mazo.repartir();
 		this.talon = new TalonSpider(mazoDistribuido.removeLast());
-		this.tableau = new Tableau(mazoDistribuido);
+		this.tableau = new Tableau(new LinkedList<>(mazoDistribuido.stream().map(x -> new PilaDeTableauSpider(x)).toList()));
 		Deque<PilaDeCartas> foundation = new LinkedList<>();
 		for (int i = 0; i < MazoSpider.CANT_PILAS_FOUNDATION; i++)
-			foundation.add(new PilaDeCartas());
+			foundation.add(new PilaDeFoundationSpider());
 		this.foundation = new Foundation(foundation);
 	}
 

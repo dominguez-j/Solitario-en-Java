@@ -2,17 +2,8 @@ package UI.Vista;
 
 import Spider.*;
 import Solitario.*;
-import javafx.scene.effect.ColorAdjust;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class SpiderView extends GameView {
-
-	@Override
-	public void irAlMenu() throws IOException {
-		Navigation.irAlMenu((Stage)menuBar.getScene().getWindow());
-	}
 
 	@Override
 	protected void cargarTablero() {

@@ -18,8 +18,8 @@ public class Klondike extends Solitario implements Serializable, ResolucionConfi
     @Override
     public void llenarJuego(){
         Deque<PilaDeCartas> mazoDistribuido = mazo.repartir();
-        talon = new TalonKlondike(mazoDistribuido.removeLast(), waste);
-        tableau = new Tableau(mazoDistribuido);
+        this.talon = new TalonKlondike(mazoDistribuido.removeLast(), waste);
+        this.tableau = new Tableau(new LinkedList<>(mazoDistribuido.stream().map(x -> new PilaDeTableauKlondike(x)).toList()));
         Deque<PilaDeCartas> foundation = new LinkedList<>();
         for(Carta.Palo p : Carta.Palo.values())
             foundation.add(new PilaDeFoundationKlondike(p));

@@ -2,7 +2,6 @@ package UI.Vista;
 
 import Klondike.*;
 import Solitario.*;
-import javafx.scene.effect.ColorAdjust;
 
 public class KlondikeView extends GameView {
 	@Override
@@ -27,7 +26,7 @@ public class KlondikeView extends GameView {
 			index_palo++;
 		}
 
-		x = 40;//14
+		x = 40;
 		for(PilaDeCartas p : k.getTableau().getPilasDeTableau()){
 			y = 200;
 			cargarPilaConEventos(p, x, y, 0, 35, null);
