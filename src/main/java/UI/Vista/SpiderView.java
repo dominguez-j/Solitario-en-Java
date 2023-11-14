@@ -2,12 +2,12 @@ package UI.Vista;
 
 import Spider.*;
 import Solitario.*;
-import javafx.scene.image.ImageView;
+import javafx.scene.effect.ColorAdjust;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ViewSpider extends GameView {
+public class SpiderView extends GameView {
 
 	@Override
 	public void irAlMenu() throws IOException {
@@ -15,32 +15,28 @@ public class ViewSpider extends GameView {
 	}
 
 	@Override
-	protected void cargarTablero(Solitario s) {
+	protected void cargarTablero() {
 		Spider sp = (Spider)s;
-
-		double y = 8;
+		double y = 35;
 		double x = 14;
+		root.getChildren().clear();
+		root.setTop(menuBar);
 
 		cargarPilaConEventos(sp.getTalon(), x, y, 0.3, 0.8, null);
 
-		x = 234;
+		x = 194;
 		for(PilaDeCartas p : sp.getFoundation().getPilasFoundation()){
 			cargarPilaConEventos(p, x, y, 0, 0, null);
-			x += 110;
+			x += 90;
 		}
 
 		x = 14;
 		for(PilaDeCartas p : sp.getTableau().getPilasDeTableau()){
-			y = 210;
-			cargarPilaConEventos(p, x, y, 0, 17, null);
-			x += 110;
+			y = 200;
+			cargarPilaConEventos(p, x, y, 0, 35, null);
+			x += 90;
 		}
 
 		stage.setScene(scene);
-	}
-
-	@Override
-	protected void asociarEventoDeClicACarta(ImageView imageView, Carta carta, PilaDeCartas pila) {
-
 	}
 }

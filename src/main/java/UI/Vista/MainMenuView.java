@@ -1,18 +1,14 @@
 package UI.Vista;
 
 import UI.Controlador.GameController;
-import UI.Controlador.GameViewFactory;
+import UI.Controlador.GameControllerFactory;
 import UI.Controlador.SolitarioFactory;
-import UI.Vista.GameView;
-import UI.Vista.IconSetter;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.util.Optional;
 
-import java.io.IOException;
-
-public class ViewMainMenu {
+public class MainMenuView {
 
 	private long seed = 0;
 	private boolean noError;
@@ -89,14 +85,14 @@ public class ViewMainMenu {
 	}
 
 	@FXML
-	private void empezarJuego() throws IOException {
+	private void empezarJuego() {
 		String selectedGame = gameSelection.getValue();
 		GameView gameView = GameViewFactory.crearGameView(selectedGame);
 
 		if (gameView != null) {
 			gameView.setStage((Stage)gameSelection.getScene().getWindow());
 
-			GameController gameController = new GameController(SolitarioFactory.crearSolitario(selectedGame), gameView);
+			GameController gameController = GameControllerFactory.crearGameController(SolitarioFactory.crearSolitario(selectedGame), gameView);
  			gameController.empezarNuevaPartida(suitsSelection.getValue() ,seed != 0 ? String.valueOf(seed) : seedSelection.getValue());
 		}
 	}

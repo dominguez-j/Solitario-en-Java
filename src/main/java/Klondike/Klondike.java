@@ -37,7 +37,7 @@ public class Klondike extends Solitario implements Serializable, ResolucionConfi
 
     @Override
     public int obtenerAncho(){
-        return 800;
+        return 700;
     }
 
     @Override

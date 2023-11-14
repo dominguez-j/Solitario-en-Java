@@ -1,5 +1,6 @@
 import UI.Controlador.GameController;
-import UI.Controlador.GameLoader;
+import UI.Controlador.GameControllerFactory;
+import UI.Vista.GameViewFactory;
 import UI.Vista.GameView;
 import Solitario.Solitario;
 import UI.Vista.IconSetter;
@@ -35,10 +36,10 @@ public class Main extends Application {
 		stage.setTitle("Solitario FIUBA");
 
 		if(s != null) {
-			GameView gameView = GameLoader.crearLoader(s).getController();
+			GameView gameView = GameViewFactory.crearGameView(s.getClass().getName());
 			gameView.setStage(stage);
 
-			GameController gameController = new GameController(s, gameView);
+			GameController gameController = GameControllerFactory.crearGameController(s, gameView);
 			gameController.continuarPartida();
 		}
 

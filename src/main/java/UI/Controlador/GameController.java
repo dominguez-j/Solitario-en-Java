@@ -1,56 +1,53 @@
 package UI.Controlador;
 
 import Solitario.*;
+import UI.Vista.CardView;
 import UI.Vista.GameView;
 
 import java.io.IOException;
 
-public class GameController {
-	private Solitario solitario;
-	private GameView gameView;
-
-	public GameController(Solitario solitario, GameView gameView) {
-		this.solitario = solitario;
-		this.gameView = gameView;
-		this.gameView.setController(this);
-	}
+public abstract class GameController {
+	protected Solitario s;
+	protected GameView gameView;
 
 	public void continuarPartida() {
 		actualizarPantalla();
 	}
 
-	public void empezarNuevaPartida(String suits, String seed) throws IOException {
+	public void empezarNuevaPartida(String suits, String seed) {
 
 		if (seed.equals("Semilla aleatoria"))
-			solitario.empezarJuego(Integer.parseInt(suits));
+			s.empezarJuego(Integer.parseInt(suits));
 		else
-			solitario.empezarJuego(Integer.parseInt(suits), Long.parseLong(seed));
+			s.empezarJuego(Integer.parseInt(suits), Long.parseLong(seed));
 
 		inicializarPantalla();
 	}
 
-	private void inicializarPantalla() throws IOException {
-		gameView.inicializarJuego(solitario);
+	private void inicializarPantalla() {
+		gameView.inicializarJuego(s);
 	}
 
 	public void hacerMovimiento(PilaDeCartas origen, PilaDeCartas destino, int cantidad) throws IOException {
-		if (!solitario.verificarVictoria()) {
-			if(!solitario.esMovimientoValido(origen, destino, cantidad))
+		if (!s.verificarVictoria()) {
+			if(!s.esMovimientoValido(origen, destino, cantidad))
 				return;
 
-			solitario.moverCartas(origen, destino, cantidad);
+			s.moverCartas(origen, destino, cantidad);
 			actualizarPantalla();
 		}
 
-		if (solitario.verificarVictoria())
+		if (s.verificarVictoria())
 			mostrarMensajeDeVictoria();
 	}
 
 	private void actualizarPantalla() {
-		gameView.actualizarVista(solitario);
+		gameView.actualizarVista();
 	}
 
 	private void mostrarMensajeDeVictoria() throws IOException {
 		gameView.mostrarVentanaDeVictoria();
 	}
+
+	public abstract void asociarEventoDeClicACarta(CardView cardView, PilaDeCartas pila);
 }

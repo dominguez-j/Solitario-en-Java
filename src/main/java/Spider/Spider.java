@@ -48,11 +48,11 @@ public class Spider extends Solitario implements Serializable, ResolucionConfigu
 
 	@Override
 	public int obtenerAncho(){
-		return 1130;
+		return 914;
 	}
 
 	@Override
 	public int obtenerAlto(){
-		return 800;
+		return 900;
 	}
 }
