@@ -35,5 +35,4 @@ public class KlondikeView extends GameView {
 
 		stage.setScene(scene);
 	}
-
 }

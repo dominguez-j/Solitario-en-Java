@@ -4,6 +4,8 @@ import Solitario.Solitario;
 import Spider.TalonSpider;
 import UI.Vista.CardView;
 import UI.Vista.GameView;
+import UI.Vista.ReproductorDeSonidos;
+
 public class SpiderController extends GameController{
 
 	public SpiderController(Solitario s, GameView gameView) {
@@ -15,7 +17,8 @@ public class SpiderController extends GameController{
 	@Override
 	public void handlerTalon(CardView cardView){
 		((TalonSpider)cardView.getRefenciaPila()).robarCarta(s.getTableau(), s.getFoundation());
-		gameView.actualizarVista();
+		ReproductorDeSonidos.reproducirSonido("Sonido Carta.mp3");
+		actualizarPantalla();
 	}
 
 	@Override

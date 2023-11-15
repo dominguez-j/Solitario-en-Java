@@ -36,7 +36,7 @@ public abstract class GameView {
 		cargarTablero();
 	}
 
-	public void mostrarVentanaDeVictoria() {
+	public void mostrarVentanaDeVictoria() throws IOException {
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.setTitle("¡Victoria!");
 		alert.setHeaderText(null);
@@ -46,7 +46,9 @@ public abstract class GameView {
 
 		alert.getButtonTypes().setAll(new ButtonType("Volver"));
 
+
 		alert.showAndWait();
+		Navigation.irAlMenu((Stage)menuBar.getScene().getWindow());
 	}
 
 	public void inicializarJuego(Solitario s) {

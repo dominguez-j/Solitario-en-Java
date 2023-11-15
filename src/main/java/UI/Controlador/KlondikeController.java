@@ -4,6 +4,7 @@ import Klondike.*;
 import Solitario.Solitario;
 import UI.Vista.CardView;
 import UI.Vista.GameView;
+import UI.Vista.ReproductorDeSonidos;
 
 public class KlondikeController extends GameController{
 
@@ -15,8 +16,13 @@ public class KlondikeController extends GameController{
 
 	@Override
 	public void handlerTalon(CardView cardView){
+		if(cardView.getRefenciaPila().estaVacia())
+			ReproductorDeSonidos.reproducirSonido("Sonido Talon.mp3");
+		else
+			ReproductorDeSonidos.reproducirSonido("Sonido Carta.mp3");
+
 		((TalonKlondike)cardView.getRefenciaPila()).robarCarta();
-		gameView.actualizarVista();
+		actualizarPantalla();
 	}
 
 	@Override
