@@ -16,9 +16,11 @@ public class KlondikeController extends GameController{
 
 	@Override
 	public void handlerTalon(CardView cardView){
-		if(cardView.getRefenciaPila().estaVacia())
+		if(cardView.getRefenciaPila().estaVacia() && !((Klondike)s).getWaste().estaVacia())
 			ReproductorDeSonidos.reproducirSonido("Sonido Talon.mp3");
-		else
+		else if(!cardView.getRefenciaPila().estaVacia() && ((Klondike)s).getWaste().estaVacia())
+			ReproductorDeSonidos.reproducirSonido("Sonido Carta.mp3");
+		else if(!cardView.getRefenciaPila().estaVacia() && !((Klondike)s).getWaste().estaVacia())
 			ReproductorDeSonidos.reproducirSonido("Sonido Carta.mp3");
 
 		((TalonKlondike)cardView.getRefenciaPila()).robarCarta();

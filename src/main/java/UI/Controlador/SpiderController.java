@@ -16,8 +16,9 @@ public class SpiderController extends GameController{
 
 	@Override
 	public void handlerTalon(CardView cardView){
+		if(!cardView.getRefenciaPila().estaVacia())
+			ReproductorDeSonidos.reproducirSonido("Sonido Carta.mp3");
 		((TalonSpider)cardView.getRefenciaPila()).robarCarta(s.getTableau(), s.getFoundation());
-		ReproductorDeSonidos.reproducirSonido("Sonido Carta.mp3");
 		actualizarPantalla();
 	}
 
