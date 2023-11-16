@@ -1,5 +1,6 @@
 package UI.Vista;
 
+import Solitario.Solitario;
 import UI.Controlador.GameController;
 import UI.Controlador.GameControllerFactory;
 import UI.Controlador.SolitarioFactory;
@@ -91,7 +92,6 @@ public class MainMenuView {
 
 		if (gameView != null) {
 			gameView.setStage((Stage)gameSelection.getScene().getWindow());
-
 			GameController gameController = GameControllerFactory.crearGameController(SolitarioFactory.crearSolitario(selectedGame), gameView);
  			gameController.empezarNuevaPartida(suitsSelection.getValue() ,seed != 0 ? String.valueOf(seed) : seedSelection.getValue());
 		}

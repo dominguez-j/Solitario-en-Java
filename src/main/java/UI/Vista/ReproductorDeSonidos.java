@@ -8,7 +8,7 @@ public class ReproductorDeSonidos {
 	public static void reproducirSonido(String archivo){
 		Media sound = new Media(ReproductorDeSonidos.class.getResource("/Sonidos/"+archivo).toExternalForm());
 		MediaPlayer mediaPlayer = new MediaPlayer(sound);
-		mediaPlayer.setVolume(0.5);
+		mediaPlayer.setVolume(0.2);
 		mediaPlayer.play();
 	}
 }

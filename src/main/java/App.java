@@ -10,7 +10,7 @@ import javafx.scene.*;
 import javafx.stage.Stage;
 import java.io.*;
 
-public class Main extends Application {
+public class App extends Application {
 
 	private Solitario s = null;
 	public static void main(String[] args) {
@@ -42,7 +42,6 @@ public class Main extends Application {
 			GameController gameController = GameControllerFactory.crearGameController(s, gameView);
 			gameController.continuarPartida();
 		}
-
 		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.show();
