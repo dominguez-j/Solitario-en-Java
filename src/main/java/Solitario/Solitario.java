@@ -4,7 +4,7 @@ import UI.Vista.ResolucionConfigurable;
 
 import java.io.*;
 
-public abstract class Solitario implements ResolucionConfigurable {
+public abstract class Solitario implements Serializable, ResolucionConfigurable {
 
     public enum TipoSolitario {Klondike, Spider}
 
@@ -68,7 +68,7 @@ public abstract class Solitario implements ResolucionConfigurable {
         }
     }
 
-    public Solitario cargarPartida(InputStream is) throws IOException, ClassNotFoundException {
+    public static Solitario cargarPartida(InputStream is) throws IOException, ClassNotFoundException {
         try (ObjectInputStream solitario = new ObjectInputStream(is)) {
             return (Solitario) solitario.readObject();
         }

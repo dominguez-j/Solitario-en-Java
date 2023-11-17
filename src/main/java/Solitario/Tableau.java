@@ -1,8 +1,9 @@
 package Solitario;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Tableau {
+public class Tableau implements Serializable {
 
     private final Deque<? extends PilaDeCartas> tableau;
 

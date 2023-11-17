@@ -13,8 +13,8 @@ public abstract class GameController {
 	protected GameView gameView;
 	protected CardView cartaSeleccionada;
 
-	public void continuarPartida() {
-		actualizarPantalla();
+	public Solitario getSolitario(){
+		return this.s;
 	}
 
 	public void empezarNuevaPartida(String suits, String seed) {
@@ -27,7 +27,7 @@ public abstract class GameController {
 		inicializarPantalla();
 	}
 
-	private void inicializarPantalla() {
+	public void inicializarPantalla() {
 		gameView.inicializarJuego(s);
 	}
 

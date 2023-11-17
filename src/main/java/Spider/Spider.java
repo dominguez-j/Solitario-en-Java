@@ -1,12 +1,10 @@
 package Spider;
 
 import Solitario.*;
-import UI.Vista.ResolucionConfigurable;
 
-import java.io.Serializable;
 import java.util.*;
 
-public class Spider extends Solitario implements Serializable, ResolucionConfigurable {
+public class Spider extends Solitario {
 
 	public Spider(){this.mazo = new MazoSpider();}
 

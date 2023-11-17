@@ -1,8 +1,9 @@
 package Solitario;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class PilaDeCartas {
+public class PilaDeCartas implements Serializable {
 
     private final Deque<Carta> pila;
 

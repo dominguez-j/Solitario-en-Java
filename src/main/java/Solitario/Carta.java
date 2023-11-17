@@ -1,6 +1,8 @@
 package Solitario;
 
-public class Carta {
+import java.io.Serializable;
+
+public class Carta implements Serializable {
 
     public enum Palo {DIAMANTE, TREBOL, CORAZON, PICA}
 

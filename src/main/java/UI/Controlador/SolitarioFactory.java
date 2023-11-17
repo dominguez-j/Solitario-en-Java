@@ -10,13 +10,9 @@ public class SolitarioFactory {
 
 		TipoSolitario tipo = TipoSolitario.valueOf(tipoSolitario);
 
-		switch (tipo) {
-			case Klondike:
-				return new Klondike();
-			case Spider:
-				return new Spider();
-			default:
-				return null;
-		}
+		return switch (tipo) {
+			case Klondike -> new Klondike();
+			case Spider -> new Spider();
+		};
 	}
 }

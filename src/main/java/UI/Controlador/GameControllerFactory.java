@@ -9,13 +9,9 @@ public class GameControllerFactory {
 	public static GameController crearGameController(Solitario s, GameView gameView) {
 		TipoSolitario tipo = TipoSolitario.valueOf(s.getClass().getSimpleName());
 
-		switch (tipo) {
-			case Klondike:
-				return new KlondikeController(s, gameView);
-			case Spider:
-				return new SpiderController(s, gameView);
-			default:
-				return null;
-		}
+		return switch (tipo) {
+			case Klondike -> new KlondikeController(s, gameView);
+			case Spider -> new SpiderController(s, gameView);
+		};
 	}
 }

@@ -5,7 +5,7 @@ import Solitario.PilaDeCartas;
 
 import java.util.Deque;
 
-public class PilaDeFoundationSpider extends PilaDeCartas{
+public class PilaDeFoundationSpider extends PilaDeCartas {
 
 	public PilaDeFoundationSpider() {
 		super();

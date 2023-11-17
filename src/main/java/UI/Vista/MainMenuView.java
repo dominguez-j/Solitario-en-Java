@@ -1,6 +1,5 @@
 package UI.Vista;
 
-import Solitario.Solitario;
 import UI.Controlador.GameController;
 import UI.Controlador.GameControllerFactory;
 import UI.Controlador.SolitarioFactory;
@@ -13,6 +12,7 @@ public class MainMenuView {
 
 	private long seed = 0;
 	private boolean noError;
+	private GameController gameController;
 
 	@FXML
 	private ComboBox<String> gameSelection, suitsSelection, seedSelection;
@@ -49,7 +49,7 @@ public class MainMenuView {
 				try {
 					seed = Long.parseLong(semilla.get());
 				} catch (NumberFormatException e) {
-					mostrarError("Número inválido", "Por favor, ingrese un número válido como semilla.");
+					mostrarError();
 					noError = false;
 				}
 			} else
@@ -68,11 +68,11 @@ public class MainMenuView {
 		return dialog.showAndWait();
 	}
 
-	private void mostrarError(String titulo, String mensaje) {
+	private void mostrarError() {
 		Alert alert = new Alert(Alert.AlertType.ERROR);
-		alert.setTitle(titulo);
+		alert.setTitle("Número inválido");
 		alert.setHeaderText("");
-		alert.setContentText(mensaje);
+		alert.setContentText("Por favor, ingrese un número válido como semilla.");
 		IconSetter.setIcon((Stage) alert.getDialogPane().getScene().getWindow());
 		alert.showAndWait();
 	}
@@ -89,12 +89,9 @@ public class MainMenuView {
 	private void empezarJuego() {
 		String selectedGame = gameSelection.getValue();
 		GameView gameView = GameViewFactory.crearGameView(selectedGame);
-
-		if (gameView != null) {
-			gameView.setStage((Stage)gameSelection.getScene().getWindow());
-			GameController gameController = GameControllerFactory.crearGameController(SolitarioFactory.crearSolitario(selectedGame), gameView);
- 			gameController.empezarNuevaPartida(suitsSelection.getValue() ,seed != 0 ? String.valueOf(seed) : seedSelection.getValue());
-		}
+		gameView.setStage((Stage)gameSelection.getScene().getWindow());
+		gameController = GameControllerFactory.crearGameController(SolitarioFactory.crearSolitario(selectedGame), gameView);
+        gameController.empezarNuevaPartida(suitsSelection.getValue() ,seed != 0 ? String.valueOf(seed) : seedSelection.getValue());
 	}
 
 	@FXML
@@ -109,5 +106,9 @@ public class MainMenuView {
 
 		alert.setContentText(desarrolladores);
 		alert.showAndWait();
+	}
+
+	public GameController getGameController(){
+		return this.gameController;
 	}
 }

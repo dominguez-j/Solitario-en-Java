@@ -4,6 +4,7 @@ import UI.Vista.GameViewFactory;
 import UI.Vista.GameView;
 import Solitario.Solitario;
 import UI.Vista.IconSetter;
+import UI.Vista.MainMenuView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
@@ -12,44 +13,47 @@ import java.io.*;
 
 public class App extends Application {
 
-	private Solitario s = null;
+	private Solitario s;
+	private GameController gameController;
+	FXMLLoader loader;
 	public static void main(String[] args) {
 		launch(args);
 	}
 
 	@Override
 	public void init() throws IOException, ClassNotFoundException {
-		File partida = new File("partida.data");
+		File partida = new File("partida.ser");
 
 		if(partida.exists())
-			s = s.cargarPartida(new FileInputStream(partida));
+			s = Solitario.cargarPartida(new FileInputStream(partida));
+
+		loader = new FXMLLoader(getClass().getResource("/UI/ViewMenuInicio.fxml"));
 	}
 
 	@Override
 	public void start(Stage stage) throws IOException {
 		IconSetter.setIcon(stage);
-
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/ViewMenuInicio.fxml"));
-		Parent root = loader.load();
-		Scene scene = new Scene(root, 800, 600);
-
 		stage.setTitle("Solitario FIUBA");
+		stage.setResizable(false);
 
 		if(s != null) {
-			GameView gameView = GameViewFactory.crearGameView(s.getClass().getName());
+			GameView gameView = GameViewFactory.crearGameView(s.getClass().getSimpleName());
 			gameView.setStage(stage);
 
-			GameController gameController = GameControllerFactory.crearGameController(s, gameView);
-			gameController.continuarPartida();
-		}
-		stage.setResizable(false);
-		stage.setScene(scene);
+			gameController = GameControllerFactory.crearGameController(s, gameView);
+			gameController.inicializarPantalla();
+		} else
+			stage.setScene(new Scene(loader.load(), 800, 600));
+
 		stage.show();
 	}
 
 	@Override
 	public void stop() throws IOException {
-		if(s != null)
-			s.guardarPartida(new FileOutputStream("partida.data"));
+		if(gameController == null)
+			gameController = ((MainMenuView)loader.getController()).getGameController();
+
+		if(gameController !=  null)
+			gameController.getSolitario().guardarPartida(new FileOutputStream("partida.ser"));
 	}
 }

@@ -1,12 +1,10 @@
 package Klondike;
 
 import Solitario.*;
-import UI.Vista.ResolucionConfigurable;
 
-import java.io.Serializable;
 import java.util.*;
 
-public class Klondike extends Solitario implements Serializable, ResolucionConfigurable {
+public class Klondike extends Solitario {
 
     private Waste waste;
 

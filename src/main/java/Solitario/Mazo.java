@@ -1,8 +1,9 @@
 package Solitario;
 
+import java.io.Serializable;
 import java.util.*;
 
-public abstract class Mazo {
+public abstract class Mazo implements Serializable {
 
     public static final int CARTAS_POR_PALO = 13;
     protected Deque<Carta> mazo;

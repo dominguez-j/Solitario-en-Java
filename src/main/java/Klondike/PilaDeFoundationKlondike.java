@@ -1,6 +1,7 @@
 package Klondike;
 
 import Solitario.*;
+
 import java.util.*;
 
 public class PilaDeFoundationKlondike extends PilaDeCartas {
