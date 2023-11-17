@@ -1,0 +1,28 @@
+.button {
+    -fx-background-color: #222;
+    -fx-border-radius: 4px;
+    -fx-border-style: none;
+    -fx-box-sizing: border-box;
+    -fx-text-fill: #fff;
+    -fx-cursor: hand;
+    -fx-display: inline-block;
+    -fx-font-family: "Farfetch Basis","Helvetica Neue",Arial,sans-serif;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-line-spacing: 1.5;
+    -fx-margin: 0;
+    -fx-max-width: none;
+    -fx-min-height: 30px;
+    -fx-min-width: 130px;
+    -fx-padding: 9px 20px 8px;
+    -fx-alignment: center;
+    -fx-text-transform: none;
+    -fx-user-select: none;
+    -fx-touch-action: manipulation;
+    -fx-pref-width: 100%;
+}
+
+.button:hover,
+.button:focused {
+    -fx-opacity: 0.75;
+}

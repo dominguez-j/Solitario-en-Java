@@ -1,0 +1,14 @@
+.comboBox {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1;
+}
+
+.comboBox .arrow-button {
+    -fx-background-color: #ddd;
+}
+
+.comboBox-popup {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #ccc;
+}

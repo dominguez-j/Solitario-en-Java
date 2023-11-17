@@ -13,7 +13,7 @@
     <center>
         <VBox alignment="CENTER" spacing="20">
             <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: black;" text="Solitario" />
-            <ComboBox fx:id="gameSelection" onAction="#handleGameSelection" promptText="Seleccione un juego">
+            <ComboBox fx:id="gameSelection" onAction="#handleGameSelection" promptText="Seleccione un juego" styleClass="comboBox">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Klondike" />
@@ -22,7 +22,7 @@
                 </items>
             </ComboBox>
 
-            <ComboBox fx:id="suitsSelection" disable="true" onAction="#handleSuitsSelection" promptText="Seleccione la cantidad de palos">
+            <ComboBox fx:id="suitsSelection" disable="true" onAction="#handleSuitsSelection" promptText="Seleccione la cantidad de palos" styleClass="comboBox">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="1" />
@@ -32,7 +32,7 @@
                 </items>
             </ComboBox>
 
-            <ComboBox fx:id="seedSelection" disable="true" onAction="#handleSeedSelection" promptText="Seleccione una semilla" >
+            <ComboBox fx:id="seedSelection" disable="true" onAction="#handleSeedSelection" promptText="Seleccione una semilla" styleClass="comboBox">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Semilla personalizada" />
@@ -41,12 +41,12 @@
                 </items>
             </ComboBox>
 
-            <Button fx:id="startButton" disable="true" onAction="#empezarJuego" text="Empezar partida" />
+            <Button fx:id="startButton" disable="true" onAction="#empezarJuego" text="Empezar partida" styleClass="button"/>
         </VBox>
     </center>
     <bottom>
         <HBox alignment="CENTER">
-            <Button onAction="#mostrarDesarrolladores" text="Desarrolladores" />
+            <Button onAction="#mostrarDesarrolladores" text="Desarrolladores" styleClass="button"/>
         </HBox>
     </bottom>
 </BorderPane>
