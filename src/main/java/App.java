@@ -3,26 +3,29 @@ import UI.Controlador.GameControllerFactory;
 import UI.Vista.GameViewFactory;
 import UI.Vista.GameView;
 import Solitario.Solitario;
-import UI.Vista.IconSetter;
+import UI.Vista.UI_Setter;
 import UI.Vista.MainMenuView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.io.*;
 
 public class App extends Application {
 
 	private Solitario s;
-	private GameController gameController;
+	private GameController gc;
 	FXMLLoader loader;
+	File partida;
 	public static void main(String[] args) {
 		launch(args);
 	}
 
 	@Override
 	public void init() throws IOException, ClassNotFoundException {
-		File partida = new File("partida.ser");
+		partida = new File("partida.ser");
 
 		if(partida.exists())
 			s = Solitario.cargarPartida(new FileInputStream(partida));
@@ -32,28 +35,27 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage stage) throws IOException {
-		IconSetter.setIcon(stage);
+		UI_Setter.setIcon(stage);
 		stage.setTitle("Solitario FIUBA");
 		stage.setResizable(false);
 		stage.setScene(new Scene(loader.load(), 800, 600));
-		stage.getScene().getStylesheets().add(getClass().getResource("/Estilos/Button.css").toExternalForm());
-		stage.getScene().getStylesheets().add(getClass().getResource("/Estilos/ComboBox.css").toExternalForm());
+		UI_Setter.setStyle(stage);
 		if(s != null) {
 			GameView gameView = GameViewFactory.crearGameView(s.getClass().getSimpleName());
 			gameView.setStage(stage);
 
-			gameController = GameControllerFactory.crearGameController(s, gameView);
-			gameController.inicializarPantalla();
+			gc = GameControllerFactory.crearGameController(s, gameView);
+			gc.inicializarPantalla();
 		}
 		stage.show();
 	}
 
 	@Override
 	public void stop() throws IOException {
-		if(gameController == null)
-			gameController = ((MainMenuView)loader.getController()).getGameController();
+		if(gc == null)
+			gc = ((MainMenuView)loader.getController()).getGameController();
 
-		if(gameController !=  null)
-			gameController.getSolitario().guardarPartida(new FileOutputStream("partida.ser"));
+		if(gc !=  null)
+			gc.getSolitario().guardarPartida(new FileOutputStream("partida.ser"));
 	}
 }

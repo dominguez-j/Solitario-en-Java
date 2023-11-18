@@ -63,7 +63,7 @@ public class MainMenuView {
 		dialog.setTitle("Semilla personalizada");
 		dialog.setHeaderText("Ingrese una semilla personalizada");
 
-		IconSetter.setIcon((Stage) dialog.getDialogPane().getScene().getWindow());
+		UI_Setter.setIcon((Stage) dialog.getDialogPane().getScene().getWindow());
 
 		return dialog.showAndWait();
 	}
@@ -73,7 +73,7 @@ public class MainMenuView {
 		alert.setTitle("Número inválido");
 		alert.setHeaderText("");
 		alert.setContentText("Por favor, ingrese un número válido como semilla.");
-		IconSetter.setIcon((Stage) alert.getDialogPane().getScene().getWindow());
+		UI_Setter.setIcon((Stage) alert.getDialogPane().getScene().getWindow());
 		alert.showAndWait();
 	}
 
@@ -100,7 +100,7 @@ public class MainMenuView {
 		alert.setTitle("Créditos");
 		alert.setHeaderText("Esta aplicación fue desarrollada por:");
 
-		IconSetter.setIcon((Stage) alert.getDialogPane().getScene().getWindow());
+		UI_Setter.setIcon((Stage) alert.getDialogPane().getScene().getWindow());
 
 		String desarrolladores = "Jonathan Dominguez - 110057\nMartín Sosa - 98741\nMatías Xu - 109938";
 

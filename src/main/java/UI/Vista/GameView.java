@@ -42,7 +42,7 @@ public abstract class GameView {
 		alert.setHeaderText(null);
 		alert.setContentText("¡Felicidades, has ganado!");
 
-		IconSetter.setIcon((Stage) alert.getDialogPane().getScene().getWindow());
+		UI_Setter.setIcon((Stage) alert.getDialogPane().getScene().getWindow());
 
 		alert.getButtonTypes().setAll(new ButtonType("Volver"));
 
@@ -55,7 +55,7 @@ public abstract class GameView {
 		this.s = s;
 		root = new BorderPane();
 		root.setStyle("-fx-background-color: #006400;");
-		scene = ResolutionSetter.setResolution(root, s);
+		scene = UI_Setter.setResolution(root, s);
 		crearMenuBar();
 		cargarTablero();
 	}
