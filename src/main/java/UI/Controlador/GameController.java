@@ -5,6 +5,7 @@ import UI.Vista.CardView;
 import UI.Vista.GameView;
 import UI.Vista.ReproductorDeSonidos;
 
+import java.io.File;
 import java.io.IOException;
 
 
@@ -42,6 +43,8 @@ public abstract class GameController {
 		if(s.verificarVictoria()){
 			ReproductorDeSonidos.reproducirSonido("Sonido Victoria.mp3");
 			mostrarMensajeDeVictoria();
+			File partida = new File("partida.ser");
+			partida.delete();
 		}
 	}
 

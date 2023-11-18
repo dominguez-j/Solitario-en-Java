@@ -36,8 +36,8 @@ public class App extends Application {
 		stage.setTitle("Solitario FIUBA");
 		stage.setResizable(false);
 		stage.setScene(new Scene(loader.load(), 800, 600));
-		stage.getScene().getStylesheets().add(getClass().getResource("Estilos/Button.css").toExternalForm());
-		stage.getScene().getStylesheets().add(getClass().getResource("Estilos/ComboBox.css").toExternalForm());
+		stage.getScene().getStylesheets().add(getClass().getResource("/Estilos/Button.css").toExternalForm());
+		stage.getScene().getStylesheets().add(getClass().getResource("/Estilos/ComboBox.css").toExternalForm());
 		if(s != null) {
 			GameView gameView = GameViewFactory.crearGameView(s.getClass().getSimpleName());
 			gameView.setStage(stage);
