@@ -17,17 +17,10 @@ public abstract class GameView {
 	protected Solitario s;
 	protected BorderPane root;
 	protected MenuBar menuBar;
+	private MainMenuView mv;
 
 	public void irAlMenu() throws IOException{
-		Navigation.irAlMenu(this.stage);
-	}
-
-	public void setStage(Stage stage) {
-		this.stage = stage;
-	}
-
-	public void setController(GameController gc){
-		this.gc = gc;
+		Navigation.irAlMenu(this.stage, this.mv);
 	}
 
 	public void actualizarVista(){
@@ -45,14 +38,14 @@ public abstract class GameView {
 		alert.getButtonTypes().setAll(new ButtonType("Volver"));
 
 		alert.showAndWait();
-		Navigation.irAlMenu((Stage)menuBar.getScene().getWindow());
+		irAlMenu();
 	}
 
 	public void inicializarJuego(Solitario s) {
-		this.s = s;
+		setSolitario(s);
 		root = new BorderPane();
 		root.setStyle("-fx-background-color: #006400;");
-		stage.setScene(UI_Setter.setResolution(root, s));
+		stage.setScene(UI_Setter.setResolutionSolitario(root, s));
 		crearMenuBar();
 		cargarTablero();
 	}
@@ -100,5 +93,21 @@ public abstract class GameView {
 			y += incrementoY;
 			x += incrementoX;
 		}
+	}
+	
+	public void setSolitario(Solitario s){
+		this.s = s;
+	}
+
+	public void setStage(Stage stage) {
+		this.stage = stage;
+	}
+
+	public void setController(GameController gc){
+		this.gc = gc;
+	}
+	
+	public void setMenuView(MainMenuView mainMenuView) {
+		this.mv = mainMenuView;
 	}
 }

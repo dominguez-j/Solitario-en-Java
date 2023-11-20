@@ -4,9 +4,11 @@ import UI.Controlador.GameController;
 import UI.Controlador.GameControllerFactory;
 import UI.Controlador.SolitarioFactory;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
+import Solitario.Solitario;
 import java.util.Optional;
 
 public class MainMenuView {
@@ -14,6 +16,11 @@ public class MainMenuView {
 	private long seed = 0;
 	private boolean noError;
 	private GameController gameController;
+	private Stage stage;
+	private Scene scene;
+
+	@FXML
+	private BorderPane root;
 
 	@FXML
 	private ComboBox<String> gameSelection, suitsSelection, seedSelection;
@@ -88,11 +95,19 @@ public class MainMenuView {
 
 	@FXML
 	private void empezarJuego() {
-		String selectedGame = gameSelection.getValue();
-		GameView gameView = GameViewFactory.crearGameView(selectedGame);
+		GameView gameView = GameViewFactory.crearGameView(gameSelection.getValue());
 		gameView.setStage((Stage)gameSelection.getScene().getWindow());
-		gameController = GameControllerFactory.crearGameController(SolitarioFactory.crearSolitario(selectedGame), gameView);
+		gameView.setMenuView(this);
+		gameController = GameControllerFactory.crearGameController(SolitarioFactory.crearSolitario(gameSelection.getValue()), gameView);
 		gameController.empezarNuevaPartida(suitsSelection.getValue() ,seed != 0 ? String.valueOf(seed) : seedSelection.getValue());
+	}
+
+	public void continuarJuego(Solitario s){
+		GameView gameView = GameViewFactory.crearGameView(s.getClass().getSimpleName());
+		gameView.setStage(this.stage);
+		gameView.setMenuView(this);
+		gameController = GameControllerFactory.crearGameController(s, gameView);
+		gameController.inicializarPantalla();
 	}
 
 	@FXML
@@ -111,5 +126,21 @@ public class MainMenuView {
 
 	public GameController getGameController(){
 		return this.gameController;
+	}
+
+	public BorderPane getRoot(){
+		return this.root;
+	}
+
+	public void setStage(Stage stage){
+		this.stage = stage;
+	}
+
+	public void setScene(Scene scene){
+		this.scene = scene;
+	}
+
+	public Scene getScene(){
+		return this.scene;
 	}
 }

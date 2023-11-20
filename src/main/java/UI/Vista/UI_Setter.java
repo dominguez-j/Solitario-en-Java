@@ -16,7 +16,11 @@ public class UI_Setter {
 		stage.getScene().getStylesheets().add(UI_Setter.class.getResource("/Estilos/ComboBox.css").toExternalForm());
 	}
 
-	public static Scene setResolution(Parent root, Solitario s){
+	public static Scene setResolutionSolitario(Parent root, Solitario s){
 		return new Scene(root, s.obtenerAncho(), s.obtenerAlto());
+	}
+
+	public static Scene setResolutionMenu(Parent root){
+		return new Scene(root, 800, 600);
 	}
 }

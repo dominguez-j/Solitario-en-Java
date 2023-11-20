@@ -28,6 +28,7 @@ public abstract class GameController {
 			s.empezarJuego(Integer.parseInt(suits));
 		else
 			s.empezarJuego(Integer.parseInt(suits), Long.parseLong(seed));
+
 		eliminarPartida();
 		inicializarPantalla();
 	}
