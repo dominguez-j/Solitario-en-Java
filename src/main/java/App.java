@@ -39,7 +39,7 @@ public class App extends Application {
 		if(s != null)
 			mv.continuarJuego(s);
 		else
-			Navigation.irAlMenu(stage, mv);
+			Navigation.irAlMenu(stage, mv.getScene());
 
 		stage.show();
 	}

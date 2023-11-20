@@ -97,7 +97,7 @@ public class MainMenuView {
 	private void empezarJuego() {
 		GameView gameView = GameViewFactory.crearGameView(gameSelection.getValue());
 		gameView.setStage((Stage)gameSelection.getScene().getWindow());
-		gameView.setMenuView(this);
+		gameView.setSceneMenuView(getScene());
 		gameController = GameControllerFactory.crearGameController(SolitarioFactory.crearSolitario(gameSelection.getValue()), gameView);
 		gameController.empezarNuevaPartida(suitsSelection.getValue() ,seed != 0 ? String.valueOf(seed) : seedSelection.getValue());
 	}
@@ -105,7 +105,7 @@ public class MainMenuView {
 	public void continuarJuego(Solitario s){
 		GameView gameView = GameViewFactory.crearGameView(s.getClass().getSimpleName());
 		gameView.setStage(this.stage);
-		gameView.setMenuView(this);
+		gameView.setSceneMenuView(getScene());
 		gameController = GameControllerFactory.crearGameController(s, gameView);
 		gameController.inicializarPantalla();
 	}

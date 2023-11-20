@@ -2,6 +2,7 @@ package UI.Vista;
 
 import UI.Controlador.GameController;
 import Solitario.*;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,9 +19,10 @@ public abstract class GameView {
 	protected BorderPane root;
 	protected MenuBar menuBar;
 	private MainMenuView mv;
+	private Scene sceneMenu;
 
 	public void irAlMenu() throws IOException{
-		Navigation.irAlMenu(this.stage, this.mv);
+		Navigation.irAlMenu(this.stage, this.sceneMenu);
 	}
 
 	public void actualizarVista(){
@@ -107,7 +109,7 @@ public abstract class GameView {
 		this.gc = gc;
 	}
 	
-	public void setMenuView(MainMenuView mainMenuView) {
-		this.mv = mainMenuView;
+	public void setSceneMenuView(Scene sceneMenu) {
+		this.sceneMenu = sceneMenu;
 	}
 }
