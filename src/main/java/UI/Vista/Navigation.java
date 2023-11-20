@@ -1,5 +1,6 @@
 package UI.Vista;
 
+import UI.Controlador.GameController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

@@ -2,7 +2,6 @@ package UI.Vista;
 
 import UI.Controlador.GameController;
 import Solitario.*;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,7 +13,6 @@ import java.util.Iterator;
 public abstract class GameView {
 
 	protected Stage stage;
-	protected Scene scene;
 	protected GameController gc;
 	protected Solitario s;
 	protected BorderPane root;
@@ -46,7 +44,6 @@ public abstract class GameView {
 
 		alert.getButtonTypes().setAll(new ButtonType("Volver"));
 
-
 		alert.showAndWait();
 		Navigation.irAlMenu((Stage)menuBar.getScene().getWindow());
 	}
@@ -55,7 +52,7 @@ public abstract class GameView {
 		this.s = s;
 		root = new BorderPane();
 		root.setStyle("-fx-background-color: #006400;");
-		scene = UI_Setter.setResolution(root, s);
+		stage.setScene(UI_Setter.setResolution(root, s));
 		crearMenuBar();
 		cargarTablero();
 	}

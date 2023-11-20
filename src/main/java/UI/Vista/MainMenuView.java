@@ -6,6 +6,7 @@ import UI.Controlador.SolitarioFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+
 import java.util.Optional;
 
 public class MainMenuView {
@@ -91,7 +92,7 @@ public class MainMenuView {
 		GameView gameView = GameViewFactory.crearGameView(selectedGame);
 		gameView.setStage((Stage)gameSelection.getScene().getWindow());
 		gameController = GameControllerFactory.crearGameController(SolitarioFactory.crearSolitario(selectedGame), gameView);
-        gameController.empezarNuevaPartida(suitsSelection.getValue() ,seed != 0 ? String.valueOf(seed) : seedSelection.getValue());
+		gameController.empezarNuevaPartida(suitsSelection.getValue() ,seed != 0 ? String.valueOf(seed) : seedSelection.getValue());
 	}
 
 	@FXML

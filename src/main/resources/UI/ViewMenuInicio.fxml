@@ -4,16 +4,16 @@
 <?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.*?>
 
-<BorderPane prefWidth="800" prefHeight="600" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="UI.Vista.MainMenuView">
+<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Vista.MainMenuView">
     <style>
         -fx-background-color: #006400;
     </style>
 
     <center>
         <VBox alignment="CENTER" spacing="20">
-            <Text style="-fx-font-family: 'Arial', sans-serif; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: black;" text="Solitario"/>
+            <Text style="-fx-font-family: 'Arial', sans-serif; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: black;" text="Solitario" />
             <ComboBox fx:id="gameSelection" onAction="#handleGameSelection" promptText="Seleccione un juego" styleClass="comboBox">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
@@ -42,12 +42,12 @@
                 </items>
             </ComboBox>
 
-            <Button fx:id="startButton" disable="true" onAction="#empezarJuego" text="Empezar partida" styleClass="button"/>
+            <Button fx:id="startButton" disable="true" onAction="#empezarJuego" styleClass="button" text="Empezar partida" />
         </VBox>
     </center>
     <bottom>
         <HBox alignment="CENTER">
-            <Button onAction="#mostrarDesarrolladores" text="Desarrolladores" styleClass="button"/>
+            <Button onAction="#mostrarDesarrolladores" styleClass="button" text="Desarrolladores" />
         </HBox>
     </bottom>
 </BorderPane>

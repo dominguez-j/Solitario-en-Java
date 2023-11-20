@@ -8,7 +8,6 @@ import UI.Vista.ReproductorDeSonidos;
 import java.io.File;
 import java.io.IOException;
 
-
 public abstract class GameController {
 	protected Solitario s;
 	protected GameView gameView;
@@ -18,13 +17,18 @@ public abstract class GameController {
 		return this.s;
 	}
 
+	private void eliminarPartida(){
+		File partida = new File("partida.ser");
+		partida.delete();
+	}
+
 	public void empezarNuevaPartida(String suits, String seed) {
 
 		if (seed.equals("Semilla aleatoria"))
 			s.empezarJuego(Integer.parseInt(suits));
 		else
 			s.empezarJuego(Integer.parseInt(suits), Long.parseLong(seed));
-
+		eliminarPartida();
 		inicializarPantalla();
 	}
 
@@ -43,8 +47,7 @@ public abstract class GameController {
 		if(s.verificarVictoria()){
 			ReproductorDeSonidos.reproducirSonido("Sonido Victoria.mp3");
 			mostrarMensajeDeVictoria();
-			File partida = new File("partida.ser");
-			partida.delete();
+			eliminarPartida();
 		}
 	}
 

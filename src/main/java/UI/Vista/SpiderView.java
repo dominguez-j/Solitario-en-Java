@@ -27,7 +27,5 @@ public class SpiderView extends GameView {
 			cargarPilaConEventos(p, x, y, 0, 35, null);
 			x += 90;
 		}
-
-		stage.setScene(scene);
 	}
 }
