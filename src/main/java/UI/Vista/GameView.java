@@ -2,13 +2,12 @@ package UI.Vista;
 
 import UI.Controlador.GameController;
 import Solitario.*;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.io.IOException;
 import java.util.Iterator;
 
 public abstract class GameView {
@@ -18,18 +17,17 @@ public abstract class GameView {
 	protected Solitario s;
 	protected BorderPane root;
 	protected MenuBar menuBar;
-	private MainMenuView mv;
-	private Scene sceneMenu;
+	private Scene sceneMainMenu;
 
-	public void irAlMenu() throws IOException{
-		Navigation.irAlMenu(this.stage, this.sceneMenu);
+	public void irAlMenu() {
+		Navigation.irAlMenu(this.stage, this.sceneMainMenu);
 	}
 
 	public void actualizarVista(){
 		cargarTablero();
 	}
 
-	public void mostrarVentanaDeVictoria() throws IOException {
+	public void mostrarVentanaDeVictoria() {
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.setTitle("¡Victoria!");
 		alert.setHeaderText(null);
@@ -58,11 +56,7 @@ public abstract class GameView {
 		MenuItem irAlMenu = new MenuItem("Ir al Menú Principal");
 
 		irAlMenu.setOnAction(event -> {
-			try {
-				this.irAlMenu();
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
+			this.irAlMenu();
 		});
 
 		opcionesMenu.getItems().add(irAlMenu);
@@ -82,14 +76,14 @@ public abstract class GameView {
 	}
 
 	protected void cargarPilaConEventos(PilaDeCartas pila, double x, double y, double incrementoX, double incrementoY, String palo) {
-		ImageView cartaImageView = crearImageView(new Image(palo == null ? "/Cartas/VACIO.png": "/Cartas/"+palo+" VACIO.png"), x,y);
+		ImageView cartaImageView = crearImageView(new Image(palo == null ? "/Cartas/VACIO.png": "/Cartas/"+palo+" VACIO.png"), x, y);
 		gc.asociarEventoDeClicACarta(new CardView(null, cartaImageView, pila));
 		root.getChildren().add(cartaImageView);
 
 		Iterator<Carta> iterador = pila.getPila().descendingIterator();
 		while (iterador.hasNext()){
 			Carta carta = iterador.next();
-			cartaImageView = crearImageView(new Image(carta.getImagenSegunEstado()), x,y);
+			cartaImageView = crearImageView(new Image(carta.getImagenSegunEstado()), x, y);
 			gc.asociarEventoDeClicACarta(new CardView(carta, cartaImageView, pila));
 			root.getChildren().add(cartaImageView);
 			y += incrementoY;
@@ -109,7 +103,7 @@ public abstract class GameView {
 		this.gc = gc;
 	}
 	
-	public void setSceneMenuView(Scene sceneMenu) {
-		this.sceneMenu = sceneMenu;
+	public void setSceneMenuView(Scene sceneMainMenu) {
+		this.sceneMainMenu = sceneMainMenu;
 	}
 }

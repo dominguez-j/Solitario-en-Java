@@ -7,7 +7,6 @@ import Spider.Spider;
 
 public class SolitarioFactory {
 	public static Solitario crearSolitario(String tipoSolitario){
-
 		TipoSolitario tipo = TipoSolitario.valueOf(tipoSolitario);
 
 		return switch (tipo) {

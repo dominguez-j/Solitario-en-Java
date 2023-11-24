@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import Solitario.Solitario;
+
 import java.util.Optional;
 
 public class MainMenuView {
@@ -51,7 +52,7 @@ public class MainMenuView {
 		String selectedSeed = seedSelection.getValue();
 		noError = true;
 		if ("Semilla personalizada".equals(selectedSeed)) {
-			Optional<String> semilla = showSemillaInputDialog();
+			Optional<String> semilla = showSeedInputDialog();
 
 			if(semilla.isPresent()){
 				try {
@@ -66,7 +67,7 @@ public class MainMenuView {
 		updateStartButtonState();
 	}
 
-	private Optional<String> showSemillaInputDialog() {
+	private Optional<String> showSeedInputDialog() {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Semilla personalizada");
 		dialog.setHeaderText("Ingrese una semilla personalizada");

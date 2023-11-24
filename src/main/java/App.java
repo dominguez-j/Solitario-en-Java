@@ -17,11 +17,16 @@ public class App extends Application {
 	}
 
 	@Override
-	public void init() throws IOException, ClassNotFoundException {
+	public void init() throws IOException {
 		File partida = new File("partida.ser");
 
-		if(partida.exists())
-			s = Solitario.cargarPartida(new FileInputStream(partida));
+		if(partida.exists()){
+			try{
+				s = Solitario.cargarPartida(new FileInputStream(partida));
+			} catch (IOException | ClassNotFoundException e) {
+				s = null;
+			}
+		}
 
 		FXMLLoader loader = new FXMLLoader(Navigation.class.getResource("/UI/ViewMenuInicio.fxml"));
 		loader.load();
@@ -30,7 +35,7 @@ public class App extends Application {
 	}
 
 	@Override
-	public void start(Stage stage){
+	public void start(Stage stage) {
 		UI_Setter.setIcon(stage);
 		stage.setTitle("Solitario FIUBA");
 		stage.setResizable(false);

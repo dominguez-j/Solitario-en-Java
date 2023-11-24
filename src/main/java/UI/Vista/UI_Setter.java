@@ -21,6 +21,6 @@ public class UI_Setter {
 	}
 
 	public static Scene setResolutionMenu(Parent root){
-		return new Scene(root, 800, 600);
+		return new Scene(root, 500, 400);
 	}
 }

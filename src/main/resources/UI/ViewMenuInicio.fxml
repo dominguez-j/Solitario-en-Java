@@ -4,16 +4,16 @@
 <?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
+<?import javafx.scene.text.Text?>
 <BorderPane fx:id="root" prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Vista.MainMenuView">
     <style>
-        -fx-background-color: #006400;
+        -fx-background-color: linear-gradient(to bottom right, #009000, #006400);
     </style>
 
     <center>
         <VBox alignment="CENTER" spacing="20">
-            <Text style="-fx-font-family: 'Arial', sans-serif; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: black;" text="Solitario" />
+            <Text style="-fx-font-family: 'Consolas'; -fx-font-size: 35px; -fx-text-fill: black;" text="Solitario" />
             <ComboBox fx:id="gameSelection" onAction="#handleGameSelection" promptText="Seleccione un juego" styleClass="comboBox">
                 <items>
                     <FXCollections fx:factory="observableArrayList">

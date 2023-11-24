@@ -5,7 +5,6 @@ import Solitario.Solitario;
 import UI.Vista.GameView;
 
 public class GameControllerFactory {
-
 	public static GameController crearGameController(Solitario s, GameView gameView) {
 		TipoSolitario tipo = TipoSolitario.valueOf(s.getClass().getSimpleName());
 

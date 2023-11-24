@@ -4,6 +4,7 @@ import Klondike.*;
 import Solitario.*;
 
 public class KlondikeView extends GameView {
+
 	@Override
 	protected void cargarTablero() {
 		Klondike k = (Klondike)s;
