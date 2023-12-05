@@ -22,10 +22,6 @@ public class SpiderView extends GameView {
 		}
 
 		x = 14;
-		for(PilaDeCartas p : sp.getTableau().getPilasDeTableau()){
-			y = 200;
-			cargarPilaConEventos(p, x, y, 0, 35, null);
-			x += 90;
-		}
+		cargarPilaTableauConEventos(x, sp);
 	}
 }

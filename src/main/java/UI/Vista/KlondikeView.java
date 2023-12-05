@@ -28,10 +28,6 @@ public class KlondikeView extends GameView {
 		}
 
 		x = 40;
-		for(PilaDeCartas p : k.getTableau().getPilasDeTableau()){
-			y = 200;
-			cargarPilaConEventos(p, x, y, 0, 35, null);
-			x += 90;
-		}
+		cargarPilaTableauConEventos(x, k);
 	}
 }

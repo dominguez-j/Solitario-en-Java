@@ -12,8 +12,8 @@ public class UI_Setter {
 	}
 
 	public static void setStyle(Stage stage){
-		stage.getScene().getStylesheets().add(UI_Setter.class.getResource("/Estilos/Button.css").toExternalForm());
-		stage.getScene().getStylesheets().add(UI_Setter.class.getResource("/Estilos/ComboBox.css").toExternalForm());
+			stage.getScene().getStylesheets().add(String.valueOf(UI_Setter.class.getResource("/Estilos/Button.css")));
+			stage.getScene().getStylesheets().add(String.valueOf(UI_Setter.class.getResource("/Estilos/ComboBox.css")));
 	}
 
 	public static Scene setResolutionSolitario(Parent root, Solitario s){

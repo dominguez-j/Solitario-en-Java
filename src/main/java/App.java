@@ -17,7 +17,7 @@ public class App extends Application {
 	}
 
 	@Override
-	public void init() throws IOException {
+	public void init(){
 		File partida = new File("partida.ser");
 
 		if(partida.exists()){
@@ -28,10 +28,15 @@ public class App extends Application {
 			}
 		}
 
-		FXMLLoader loader = new FXMLLoader(Navigation.class.getResource("/UI/ViewMenuInicio.fxml"));
-		loader.load();
-		mv = loader.getController();
-		mv.setScene(UI_Setter.setResolutionMenu(mv.getRoot()));
+		try{
+			FXMLLoader loader = new FXMLLoader(Navigation.class.getResource("/UI/ViewMenuInicio.fxml"));
+			loader.load();
+			mv = loader.getController();
+			mv.setScene(UI_Setter.setResolutionMenu(mv.getRoot()));
+		}
+		catch (IOException e){
+			stop();
+		}
 	}
 
 	@Override
@@ -50,11 +55,15 @@ public class App extends Application {
 	}
 
 	@Override
-	public void stop() throws IOException {
+	public void stop(){
 		if(mv.getGameController() != null){
 			GameController gc = mv.getGameController();
-			if(!gc.getSolitario().verificarVictoria())
-				gc.getSolitario().guardarPartida(new FileOutputStream("partida.ser"));
+			if(!gc.getSolitario().verificarVictoria()){
+				try{
+					gc.getSolitario().guardarPartida(new FileOutputStream("partida.ser"));
+				}
+				catch (IOException ignored){}
+			}
 		}
 	}
 }

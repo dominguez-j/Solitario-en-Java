@@ -15,7 +15,6 @@ import java.util.Optional;
 public class MainMenuView {
 
 	private long seed = 0;
-	private boolean noError;
 	private GameController gameController;
 	private Stage stage;
 	private Scene scene;
@@ -50,21 +49,22 @@ public class MainMenuView {
 	@FXML
 	private void handleSeedSelection() {
 		String selectedSeed = seedSelection.getValue();
-		noError = true;
+
 		if ("Semilla personalizada".equals(selectedSeed)) {
 			Optional<String> semilla = showSeedInputDialog();
 
-			if(semilla.isPresent()){
+			if (semilla.isPresent()) {
 				try {
 					seed = Long.parseLong(semilla.get());
+					updateStartButtonState();
 				} catch (NumberFormatException e) {
 					mostrarError();
-					noError = false;
+					startButton.setDisable(true);
 				}
 			} else
-				noError = false;
-		}
-		updateStartButtonState();
+				startButton.setDisable(true);
+		} else
+			updateStartButtonState();
 	}
 
 	private Optional<String> showSeedInputDialog() {
@@ -89,7 +89,7 @@ public class MainMenuView {
 	private void updateStartButtonState() {
 		boolean gameValid = gameSelection.getValue() != null;
 		boolean suitsValid = suitsSelection.getValue() != null;
-		boolean seedValid = seedSelection.getValue() != null && noError;
+		boolean seedValid = seedSelection.getValue() != null;
 
 		startButton.setDisable(!(gameValid && suitsValid && seedValid));
 	}
@@ -119,7 +119,7 @@ public class MainMenuView {
 
 		UI_Setter.setIcon((Stage) alert.getDialogPane().getScene().getWindow());
 
-		String desarrolladores = "Jonathan Dominguez - 110057\nMartín Sosa - 98741\nMatías Xu - 109938";
+		String desarrolladores = "Jonathan Dominguez - 110057\nMartín Sosa - 98741";
 
 		alert.setContentText(desarrolladores);
 		alert.showAndWait();

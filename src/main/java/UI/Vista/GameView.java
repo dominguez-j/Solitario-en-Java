@@ -76,19 +76,20 @@ public abstract class GameView {
 	}
 
 	protected void cargarPilaConEventos(PilaDeCartas pila, double x, double y, double incrementoX, double incrementoY, String palo) {
-		ImageView cartaImageView = crearImageView(new Image(palo == null ? "/Cartas/VACIO.png": "/Cartas/"+palo+" VACIO.png"), x, y);
-		gc.asociarEventoDeClicACarta(new CardView(null, cartaImageView, pila));
-		root.getChildren().add(cartaImageView);
+		addCartaImageView(null, crearImageView(new Image(palo == null ? "/Cartas/VACIO.png": "/Cartas/"+palo+" VACIO.png"), x, y), pila);
 
 		Iterator<Carta> iterador = pila.getPila().descendingIterator();
 		while (iterador.hasNext()){
 			Carta carta = iterador.next();
-			cartaImageView = crearImageView(new Image(carta.getImagenSegunEstado()), x, y);
-			gc.asociarEventoDeClicACarta(new CardView(carta, cartaImageView, pila));
-			root.getChildren().add(cartaImageView);
+			addCartaImageView(carta, crearImageView(new Image(carta.getImagenSegunEstado()), x, y), pila);
 			y += incrementoY;
 			x += incrementoX;
 		}
+	}
+
+	private void addCartaImageView(Carta carta, ImageView cartaImageView, PilaDeCartas pila){
+		gc.asociarEventoDeClicACarta(new CardView(carta, cartaImageView, pila));
+		root.getChildren().add(cartaImageView);
 	}
 	
 	public void setSolitario(Solitario s){
@@ -105,5 +106,13 @@ public abstract class GameView {
 	
 	public void setSceneMenuView(Scene sceneMainMenu) {
 		this.sceneMainMenu = sceneMainMenu;
+	}
+
+	protected void cargarPilaTableauConEventos(double x , Solitario s){
+		for(PilaDeCartas p : s.getTableau().getPilasDeTableau()){
+			double y = 200;
+			cargarPilaConEventos(p, x, y, 0, 35, null);
+			x += 90;
+		}
 	}
 }
