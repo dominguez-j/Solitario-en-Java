@@ -3,6 +3,7 @@ import UI.Vista.*;
 import Solitario.Solitario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -35,6 +36,7 @@ public class App extends Application {
 			mv.setScene(UI_Setter.setResolutionMenu(mv.getRoot()));
 		}
 		catch (IOException e){
+			mostrarError(e.getMessage(), "Error al cargar la interfaz");
 			stop();
 		}
 	}
@@ -62,8 +64,19 @@ public class App extends Application {
 				try{
 					gc.getSolitario().guardarPartida(new FileOutputStream("partida.ser"));
 				}
-				catch (IOException ignored){}
+				catch (IOException e){
+					mostrarError(e.getMessage(),"Error al guardar la partida");
+				}
 			}
 		}
+	}
+
+	private void mostrarError(String mensaje, String header){
+		Alert alert = new Alert(Alert.AlertType.ERROR);
+		UI_Setter.setIcon((Stage) alert.getDialogPane().getScene().getWindow());
+		alert.setTitle("Error");
+		alert.setHeaderText(header);
+		alert.setContentText(mensaje);
+		alert.showAndWait();
 	}
 }
